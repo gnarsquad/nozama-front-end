@@ -45,7 +45,7 @@ const signOutSuccess = () => {
 //   $('#comment-success').removeClass('hidden').fadeOut(2000, function(){
 //     $('#comment-success').addClass('hidden').show();
 //   });
-//   comments.getComments($('.flag').data('id'));
+//   comments.getComments($('.product').data('id'));
 //   console.log(data);
 // };
 

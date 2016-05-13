@@ -47,7 +47,7 @@ const changePass = (success, failure, data) => {
   .fail(failure);
 };
 
-// const submitComment = (success, failure, content, flag_id) => {
+// const submitComment = (success, failure, content, product_id) => {
 //   $.ajax({
 //     method: 'POST',
 //     url: app.api + '/comments/',
@@ -58,7 +58,7 @@ const changePass = (success, failure, data) => {
 //       comment:  {
 //         content: content,
 //         user_id: app.user.id,
-//         flag_id: flag_id,
+//         product_id: product_id,
 //       },
 //     },
 //   }).done(success)

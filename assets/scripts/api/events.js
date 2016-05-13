@@ -32,9 +32,9 @@ const addHandlers = () => {
   });
   $('#new-comment').on('click', function (event) {
     let content = $("#comment").val();
-    let flag_id = $(".flag").data("id");
+    let product_id = $(".product").data("id");
     event.preventDefault();
-    authApi.submitComment(authUi.commentSuccess, authUi.failure, content, flag_id);
+    authApi.submitComment(authUi.commentSuccess, authUi.failure, content, product_id);
   });
   $('#edit-comment').on('click', function (event) {
     let id = $(this).data("id");

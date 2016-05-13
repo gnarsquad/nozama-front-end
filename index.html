@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Flags!</title>
+  <title>Nozama!</title>
   <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
   <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,8 +20,8 @@
         <div class="modal-body">
           <form id="sign-up">
             <div class="form-group">
-              <label for="sign-up-email">Username</label>
-              <input name="credentials[email]" type="text" class="form-control" id="sign-up-email" placeholder="username">
+              <label for="sign-up-email">Email</label>
+              <input name="credentials[email]" type="text" class="form-control" id="sign-up-email" placeholder="email">
             </div>
             <div class="form-group">
               <label for="sign-up-pass">Password</label>
@@ -71,16 +71,16 @@
     </div>
   </div>
   <!-- End modal change-pass -->
-  <!-- Start modal flag -->
-  <div class="modal fade bs-example-modal-lg" id="flagModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <!-- Start modal product -->
+  <div class="modal fade bs-example-modal-lg" id="productModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="modal-header flag-header">
+        <div class="modal-header product-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h2 class="modal-title flagName"></h2>
+          <h2 class="modal-title productName"></h2>
         </div>
         <div class="modal-body">
-          <div class="flagDisplay">
+          <div class="productDisplay">
           </div>
           <div class="inline-block">
             <!-- Couldn't get visual of avg ratings to display correctly
@@ -109,7 +109,7 @@
             <button type="button" class="btn btn-default comment-btn" id="cancel-comment">Cancel</button>
           </form>
           <div class="alert alert-success alert-dismissable hidden" id="comment-success" role="alert">Comment submitted!</div>
-          <div class="flag-comments">
+          <div class="product-comments">
           </div>
         </div>
         <div class="modal-footer">
@@ -118,7 +118,7 @@
       </div>
     </div>
   </div>
-  <!-- End modal flag -->
+  <!-- End modal product -->
 
 <!-- Navbar -->
   <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -137,7 +137,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <form class="navbar-form navbar-right loggedin-hide" id="sign-in">
           <div class="form-group">
-            <input type="text" name="credentials[email]" class="form-control" placeholder="username">
+            <input type="text" name="credentials[email]" class="form-control" placeholder="email">
             <input type="password" name="credentials[password]" class="form-control" placeholder="password">
           </div>
           <button type="submit" class="btn btn-primary">Sign in</button>
@@ -156,10 +156,45 @@
  <div class="col-xs-12 spacer"></div>
   <div class="content">
     <ul class="grid">
-        <li class="flag-tile" data-id="">
-          <img src="assets/images/placeholder.png" class="img-responsive gallery-flag" data-id="" data-original="" name="" />
+        <li class="product-tile" data-id="">
+          <img src="assets/images/placeholder.png" class="img-responsive gallery-product" data-id="" data-original="" name="" />
           <h4 data-id="">Product Name</h4>
-          <h5 style="float: right">$12.34</h5>
+          <h5 style="float: right" class="price">$12.34</h5>
+        </li>
+        <li class="product-tile" data-id="">
+          <img src="assets/images/placeholder.png" class="img-responsive gallery-product" data-id="" data-original="" name="" />
+          <h4 data-id="">Product Name</h4>
+          <h5 style="float: right" class="price">$12.34</h5>
+        </li>
+        <li class="product-tile" data-id="">
+          <img src="assets/images/placeholder.png" class="img-responsive gallery-product" data-id="" data-original="" name="" />
+          <h4 data-id="">Product Name</h4>
+          <h5 style="float: right" class="price">$12.34</h5>
+        </li>
+        <li class="product-tile" data-id="">
+          <img src="assets/images/placeholder.png" class="img-responsive gallery-product" data-id="" data-original="" name="" />
+          <h4 data-id="">Product Name</h4>
+          <h5 style="float: right" class="price">$12.34</h5>
+        </li>
+        <li class="product-tile" data-id="">
+          <img src="assets/images/placeholder.png" class="img-responsive gallery-product" data-id="" data-original="" name="" />
+          <h4 data-id="">Product Name</h4>
+          <h5 style="float: right" class="price">$12.34</h5>
+        </li>
+        <li class="product-tile" data-id="">
+          <img src="assets/images/placeholder.png" class="img-responsive gallery-product" data-id="" data-original="" name="" />
+          <h4 data-id="">Product Name</h4>
+          <h5 style="float: right" class="price">$12.34</h5>
+        </li>
+        <li class="product-tile" data-id="">
+          <img src="assets/images/placeholder.png" class="img-responsive gallery-product" data-id="" data-original="" name="" />
+          <h4 data-id="">Product Name</h4>
+          <h5 style="float: right" class="price">$12.34</h5>
+        </li>
+        <li class="product-tile" data-id="">
+          <img src="assets/images/placeholder.png" class="img-responsive gallery-product" data-id="" data-original="" name="" />
+          <h4 data-id="">Product Name</h4>
+          <h5 style="float: right" class="price">$12.34</h5>
         </li>
     </ul>
   </div>
