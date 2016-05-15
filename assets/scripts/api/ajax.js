@@ -26,7 +26,7 @@ const signOut = (success, failure) => {
   // if (!api.user) bad;
   $.ajax({
     method: 'DELETE',
-    url: app.api + '/sign-out/' + app.user.id,
+    url: app.api + '/sign-out/' + app.user._id,
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
@@ -37,7 +37,7 @@ const signOut = (success, failure) => {
 const changePass = (success, failure, data) => {
   $.ajax({
     method: 'PATCH',
-    url: app.api + '/change-password/' + app.user.id,
+    url: app.api + '/change-password/' + app.user._id,
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
