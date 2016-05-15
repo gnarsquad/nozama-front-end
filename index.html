@@ -169,15 +169,20 @@
         <button type="submit" class="btn btn-success navbar-btn loggedin-hide" id="sign-up-btn" data-toggle="modal" data-target="#sign-up-modal">
           Sign up!
         </button>
-        <button type="submit" class="btn btn-warning navbar-btn loggedout-hide" id="change-pass-btn" data-toggle="modal" data-target="#change-pass-modal">
-          Change password
-        </button>
-        <button type="submit" class="btn btn-danger navbar-btn navbar-right loggedout-hide" id="sign-out">
-          Sign out
-        </button>
         <button type="button" class="btn btn-success navbar-btn navbar-right" data-toggle="modal" data-target="#cartModal">
-          <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Cart
+          <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Cart
         </button>
+        <div class="btn-group navbar-right">
+          <button type="button" class="btn btn-primary navbar-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Account <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#" data-toggle="modal" data-target="#change-pass-modal">Change password</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#" id="sign-out">Sign out</a></li>
+          </ul>
+        </div>
+
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>

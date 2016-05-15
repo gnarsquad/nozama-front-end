@@ -7,9 +7,9 @@ const authUi = require('./ui.js');
 // const app = require('./apiurl.js');
 
 const addHandlers = () => {
-  $( document ).ready(function() {
-    $('.loggedout-hide').hide();
-  });
+  // $( document ).ready(function() {
+  //   $('.loggedout-hide').hide();
+  // });
   // Login handers
   $('#sign-up').on('submit', function (event) {
     let data = getFormFields(this);
@@ -22,6 +22,7 @@ const addHandlers = () => {
     authApi.signIn(authUi.signInSuccess, authUi.failure, data);
   });
   $('#sign-out').on('click', function (event) {
+    console.log('click!');
     event.preventDefault();
     authApi.signOut(authUi.signOutSuccess, authUi.failure);
   });
@@ -29,19 +30,6 @@ const addHandlers = () => {
     let data = getFormFields(this);
     event.preventDefault();
     authApi.changePass(authUi.success, authUi.failure, data);
-  });
-  $('#new-comment').on('click', function (event) {
-    let content = $("#comment").val();
-    let product_id = $(".product").data("id");
-    event.preventDefault();
-    authApi.submitComment(authUi.commentSuccess, authUi.failure, content, product_id);
-  });
-  $('#edit-comment').on('click', function (event) {
-    let id = $(this).data("id");
-    let content = $("#comment").val();
-    $('#edit-comment').addClass('hidden');
-    event.preventDefault();
-    authApi.editComment(authUi.commentSuccess, authUi.failure, content, id);
   });
 };
 
