@@ -71,6 +71,7 @@
     </div>
   </div>
   <!-- End modal change-pass -->
+
   <!-- Start modal product -->
   <div class="modal fade bs-example-modal-lg" id="productModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
@@ -104,7 +105,7 @@
                       <option value="9">9</option>
                       <option value="10">10</option>
                   </select>
-                  
+
                   <h4>Description</h4>
                   <p>Lorem ipsum dolor et sit</p>
                   <hr>
@@ -121,6 +122,27 @@
     </div>
   </div>
   <!-- End modal product -->
+
+  <!-- Start modal cart -->
+  <div class="modal fade bs-example-modal-lg" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header cart-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h2 class="modal-title">Your shopping cart</h2>
+        </div>
+        <div class="modal-body">
+          <div class="cartDisplay">
+            <h3>Your shopping cart is empty.</h3>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End modal cart -->
 
 <!-- Navbar -->
   <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -150,7 +172,12 @@
         <button type="submit" class="btn btn-warning navbar-btn loggedout-hide" id="change-pass-btn" data-toggle="modal" data-target="#change-pass-modal">
           Change password
         </button>
-        <button type="submit" class="btn btn-danger navbar-btn navbar-right loggedout-hide" id="sign-out">Sign out</button>
+        <button type="submit" class="btn btn-danger navbar-btn navbar-right loggedout-hide" id="sign-out">
+          Sign out
+        </button>
+        <button type="button" class="btn btn-success navbar-btn navbar-right" data-toggle="modal" data-target="#cartModal">
+          <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Cart
+        </button>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
