@@ -188,7 +188,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="checkout-btn" type="button" class="btn btn-success" data-dismiss="modal">Proceed to Checkout</button>
+          <button id="checkout-btn" type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#checkoutModal">Proceed to Checkout</button>
         </div>
       </div>
     </div>
@@ -260,6 +260,24 @@
     </div>
   </div>
   <!-- End modal orders -->
+  <!-- Start modal checkout -->
+  <div class="modal fade bs-example-modal-lg" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header checkout-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title">Checkout</h3>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End modal checkout -->
 
 <!-- Navbar -->
   <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -291,6 +309,9 @@
         </button>
         <button type="button" class="btn btn-success navbar-btn loggedout-hide" data-toggle="modal" data-target="#ordersModal">
           <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Completed Orders
+        </button>
+        <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#checkoutModal">
+          <span aria-hidden="true"></span> Checkout Modal
         </button>
         <div class="btn-group navbar-right">
           <button type="button" class="btn btn-primary navbar-btn dropdown-toggle loggedout-hide" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
