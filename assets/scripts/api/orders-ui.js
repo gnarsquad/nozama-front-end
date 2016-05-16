@@ -12,7 +12,7 @@ const getOrdersSuccess = (data) => {
 };
 
 const getOrderSuccess = (data) => {
-  app.order = data.orders;
+  app.order = data.order;
 };
 
 const createOrderSuccess = (data) => {
