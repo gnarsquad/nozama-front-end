@@ -55,7 +55,6 @@ module.exports = {
   success,
   signInSuccess,
   signOutSuccess,
-  // commentSuccess,
   signUpSuccess,
   signUpFailure,
 };

@@ -47,59 +47,9 @@ const changePass = (success, failure, data) => {
   .fail(failure);
 };
 
-// const submitComment = (success, failure, content, product_id) => {
-//   $.ajax({
-//     method: 'POST',
-//     url: app.api + '/comments/',
-//     headers: {
-//       Authorization: 'Token token=' + app.user.token,
-//     },
-//     data: {
-//       comment:  {
-//         content: content,
-//         user_id: app.user.id,
-//         product_id: product_id,
-//       },
-//     },
-//   }).done(success)
-//   .fail(failure);
-// };
-//
-// const editComment = (success, failure, content, id) => {
-//   $.ajax({
-//     method: 'PATCH',
-//     url: app.api + '/comments/' + id,
-//     headers: {
-//       Authorization: 'Token token=' + app.user.token,
-//     },
-//     data: {
-//       comment:  {
-//         content: content,
-//       },
-//     },
-//   }).done(success)
-//   .fail(failure);
-// };
-//
-// const deleteComment = (success, failure, id) => {
-//   $.ajax({
-//     method: 'DELETE',
-//     url: app.api + '/comments/' + id,
-//     headers: {
-//       Authorization: 'Token token=' + app.user.token,
-//     },
-//   }).done(success)
-//   .fail(failure);
-// };
-
 module.exports = {
   signUp,
   signIn,
   signOut,
   changePass,
-  // submitComment,
-  // editComment,
-  // deleteComment,
-  // submitRating,
-  // updateRating
 };
