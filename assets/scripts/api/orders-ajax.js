@@ -23,5 +23,9 @@ const deleteOrder = () => {
 };
 
 module.exports = {
-
+  getOrders,
+  getOrder,
+  createOrder,
+  updateOrder,
+  deleteOrder
 };
