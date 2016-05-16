@@ -42,12 +42,29 @@ const createOrder = (success, failure, data) => {
   .fail(failure);
 };
 
-const updateOrder = () => {
-
+const updateOrder = (success, failure, data) => {
+  $.ajax({
+    method: "PATCH",
+    url: app.api + '/orders/' + app.order._id,
+    data,
+    headers: {
+      Authorization: 'Token token='+ app.user.token,
+    },
+  })
+  .done(success)
+  .fail(failure);
 };
 
-const deleteOrder = () => {
-
+const deleteOrder = (success, failure) => {
+  $.ajax({
+    url: app.api + '/orders/' + app.order._id,
+    method: "DELETE",
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  })
+  .done(success)
+  .fail(failure);
 };
 
 module.exports = {
