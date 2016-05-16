@@ -28,8 +28,18 @@ const getOrder = (success, failure) => {
   .fail(failure);
 };
 
-const createOrder = () => {
-  
+const createOrder = (success, failure, data) => {
+  $.ajax({
+    method: "POST",
+    url: app.api + '/orders',
+    dataType: 'json',
+    headers: {
+      Authorization: 'Token token='+ app.user.token,
+    },
+    data,
+  })
+  .done(success)
+  .fail(failure);
 };
 
 const updateOrder = () => {
