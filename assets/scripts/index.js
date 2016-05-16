@@ -8,6 +8,9 @@ const displayProduct = function(product){
   const display = require('./templates/product.handlebars');
   $('.product-display').empty();
   $('.product-display').append(display({product}));
+  $('#cart-add').attr("prod-id", product._id);
+  $('#cart-add').attr("prod-name", product.name);
+  $('#cart-add').attr("prod-price", product.price);
 };
 
 const getProduct = function(id){

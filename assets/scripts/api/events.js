@@ -32,10 +32,12 @@ const addHandlers = () => {
     authApi.changePass(authUi.success, authUi.failure, data);
   });
   $('#cart-add').on('click', function (event) {
-    // let data = getFormFields(this);
-    console.log('click!');
+    let id = $(this).attr("prod-id");
+    let name = $(this).attr("prod-name");
+    let price = $(this).attr("prod-price");
+    let qty = $('#quantity-select').val();
     event.preventDefault();
-    // authApi.cartAdd(authUi.success, authUi.failure, data);
+    authApi.cartAdd(authUi.success, authUi.failure, id, name, price, qty);
   });
 };
 

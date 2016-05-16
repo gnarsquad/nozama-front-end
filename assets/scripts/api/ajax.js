@@ -47,9 +47,32 @@ const changePass = (success, failure, data) => {
   .fail(failure);
 };
 
+const cartAdd = (success, failure, id, name, price, qty) => {
+  $.ajax({
+    method: 'POST',
+    url: app.api + '/carts/',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    dataProcessing: false,
+    data: {
+      lineItems: {
+        quantity: qty,
+        productid: id,
+        name: name,
+        price: price
+      }
+    }
+  }).done(success)
+  .fail(failure);
+  console.log(app.user.carts);
+};
+
+
 module.exports = {
   signUp,
   signIn,
   signOut,
   changePass,
+  cartAdd
 };
