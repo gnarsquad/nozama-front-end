@@ -7,9 +7,9 @@ const authUi = require('./ui.js');
 // const app = require('./apiurl.js');
 
 const addHandlers = () => {
-  // $( document ).ready(function() {
-  //   $('.loggedout-hide').hide();
-  // });
+  $( document ).ready(function() {
+    $('.loggedout-hide').hide();
+  });
   // Login handers
   $('#sign-up').on('submit', function (event) {
     let data = getFormFields(this);

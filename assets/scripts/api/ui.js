@@ -41,21 +41,13 @@ const signOutSuccess = () => {
   });
 };
 
-// const commentSuccess = (data) => {
-//   $('#comment-success').removeClass('hidden').fadeOut(2000, function(){
-//     $('#comment-success').addClass('hidden').show();
-//   });
-//   comments.getComments($('.product').data('id'));
-//   console.log(data);
-// };
-
 const success = (data) => {
   console.log(data);
 };
 
 const failure = (error) => {
   console.error(error);
-  console.log(app.user.id);
+  console.log(app.user._id);
 };
 
 module.exports = {
@@ -63,7 +55,6 @@ module.exports = {
   success,
   signInSuccess,
   signOutSuccess,
-  // commentSuccess,
   signUpSuccess,
   signUpFailure,
 };

@@ -188,12 +188,96 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="checkout-btn" type="button" class="btn btn-success" data-dismiss="modal">Proceed to Checkout</button>
+          <button id="checkout-btn" type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#checkoutModal">Proceed to Checkout</button>
         </div>
       </div>
     </div>
   </div>
   <!-- End modal cart -->
+  <!-- Start modal orders -->
+  <div class="modal fade bs-example-modal-lg" id="ordersModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header orders-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title">Your completed orders</h3>
+        </div>
+        <div class="modal-body">
+          <h4>You have not made any purchases yet</h4>
+          <div class="ordersDisplay">
+            <div class="row">
+                <div class="col-xs-3">
+                  <h4>Image</h4>
+                </div>
+                <div class="col-xs-4">
+                  <h4>Name</h4>
+                </div>
+                <div class="col-xs-3">
+                  <h4>Price</h4>
+                </div>
+                <div class="col-xs-2">
+                  <h4>Qty</h4>
+                </div>
+              </div>
+            <div class="well well-sm">
+              <div class="row">
+                <div class="col-xs-3">
+                  <img src="assets/images/placeholder.png" class="img-responsive img-orders" data-id="" data-original="" name="" />
+                </div>
+                <div class="col-xs-4">
+                  <h4>Product name</h4>
+                </div>
+                <div class="col-xs-3">
+                  <h4>$12.34</h4>
+                </div>
+                <div class="col-xs-2">
+                  <h4>1</h4>
+                </div>
+              </div>
+            </div>
+            <div class="well well-sm">
+              <div class="row">
+                <div class="col-xs-3">
+                  <img src="assets/images/placeholder.png" class="img-responsive img-orders" data-id="" data-original="" name="" />
+                </div>
+                <div class="col-xs-4">
+                  <h4>Product name</h4>
+                </div>
+                <div class="col-xs-3">
+                  <h4>$12.34</h4>
+                </div>
+                <div class="col-xs-2">
+                  <h4>1</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End modal orders -->
+  <!-- Start modal checkout -->
+  <div class="modal fade bs-example-modal-lg" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header checkout-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title">Checkout</h3>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End modal checkout -->
 
 <!-- Navbar -->
   <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -220,11 +304,17 @@
         <button type="submit" class="btn btn-success navbar-btn loggedin-hide" id="sign-up-btn" data-toggle="modal" data-target="#sign-up-modal">
           Sign up!
         </button>
-        <button type="button" class="btn btn-warning navbar-btn navbar-right" data-toggle="modal" data-target="#cartModal">
+        <button type="button" class="btn btn-warning navbar-btn loggedout-hide" data-toggle="modal" data-target="#cartModal">
           <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Cart
         </button>
+        <button type="button" class="btn btn-success navbar-btn loggedout-hide" data-toggle="modal" data-target="#ordersModal">
+          <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Completed Orders
+        </button>
+        <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#checkoutModal">
+          <span aria-hidden="true"></span> Checkout Modal
+        </button>
         <div class="btn-group navbar-right">
-          <button type="button" class="btn btn-primary navbar-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="btn btn-primary navbar-btn dropdown-toggle loggedout-hide" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Account <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">

@@ -2,7 +2,7 @@
 
 const app = {
   api: 'http://localhost:3000'
-  // api: 'https://products.herokuapp.com'
+  // api: 'https://nozama.herokuapp.com'
 };
 
 module.exports = app;
