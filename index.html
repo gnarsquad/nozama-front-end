@@ -82,11 +82,13 @@
         </div>
         <div class="modal-body">
           <div class="product-display">
-            
+
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <!--<h5 class="loggedin-hide">Sign in to add this product to your cart!</h5>-->
+            <button id="cart-add" type="button" class="btn btn-success loggedout-hide" prod-id="" prod-name="" prod-price="">Add to cart</button>
         </div>
       </div>
     </div>
@@ -130,8 +132,10 @@
                   <h4>$12.34</h4>
                 </div>
                 <div class="col-xs-2">
-                  <div class="input-group input-group-lg">
-                    <input type="text" value="1" class="form-control" maxlength="3" autocomplete="off" name="quantity">
+                  <div class="input-group">
+                    <h4>1</h4>
+                    <a style="display: block">Change</a>
+                    <a style="display: block">Delete</a>
                   </div>
                 </div>
               </div>
@@ -148,8 +152,8 @@
                   <h4>$12.34</h4>
                 </div>
                 <div class="col-xs-2">
-                  <div class="input-group input-group-lg">
-                    <input type="text" value="1" class="form-control" maxlength="3" autocomplete="off" name="quantity">
+                  <div class="input-group">
+                    <h4>1</h4>
                   </div>
                 </div>
               </div>
@@ -274,10 +278,10 @@
         <button type="submit" class="btn btn-success navbar-btn loggedin-hide" id="sign-up-btn" data-toggle="modal" data-target="#sign-up-modal">
           Sign up!
         </button>
-        <button type="button" class="btn btn-warning navbar-btn loggedout-hide" data-toggle="modal" data-target="#cartModal">
+        <button type="button" class="btn btn-warning navbar-btn" data-toggle="modal" data-target="#cartModal">
           <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Cart
         </button>
-        <button type="button" class="btn btn-success navbar-btn loggedout-hide" data-toggle="modal" data-target="#ordersModal">
+        <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#ordersModal">
           <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Completed Orders
         </button>
         <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#checkoutModal">

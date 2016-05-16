@@ -2,25 +2,26 @@
 
 const events = require('./api/events.js');
 const app = require('./api/apiurl.js');
+// const authUi = require('./api/ui.js');
 
 const displayProduct = function(product){
   const display = require('./templates/product.handlebars');
   $('.product-display').empty();
   $('.product-display').append(display({product}));
+  $('#cart-add').attr("prod-id", product._id);
+  $('#cart-add').attr("prod-name", product.name);
+  $('#cart-add').attr("prod-price", product.price);
 };
 
 const getProduct = function(id){
   $.ajax({
     url: app.api + "/products/" + id,
-    method: 'GET',
-    dataType: 'json'
   }).done(function(data){
     displayProduct(data.product);
   });
 };
 
 const displayProducts = function(products){
-  console.log('here!');
   const display = require('./templates/product-listing.handlebars');
   $('.content').append(display({products}));
   // $(".gallery-product").lazyload({
@@ -41,6 +42,6 @@ const getProducts = function(){
 };
 
 $(() => {
-  events.addHandlers();
   getProducts();
+  events.addHandlers();
 });

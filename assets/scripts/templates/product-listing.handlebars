@@ -1,8 +1,8 @@
 <ul class="grid">
   {{#each products}}
-    <li class="product-tile" data-id={{id}}>
-      <img src="{{image}}" class="img-responsive gallery-product" data-id={{id}} data-original={{image}} name={{name}} />
-      <h4 data-id={{id}}>{{name}}</h4>
+    <li class="product-tile" data-id={{_id}}>
+      <img src={{image}} class="img-responsive gallery-product" data-id={{_id}} name={{name}} />
+      <h4 data-id={{_id}}>{{name}}</h4>
       <h5 style="float: right" class="price">${{price}}</h5>
     </li>
   {{/each}}
