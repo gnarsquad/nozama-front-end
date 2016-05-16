@@ -2,6 +2,10 @@
 
 const app = require('./apiurl.js');
 
+const failure = (error) => {
+  console.error(error);
+};
+
 const getOrdersSuccess = (data) => {
   app.orders = data.orders;
   console.log(data);
@@ -26,6 +30,7 @@ const deleteOrderSuccess = () => {
 };
 
 module.exports = {
+  failure,
   getOrdersSuccess,
   getOrderSuccess,
   createOrderSuccess,
