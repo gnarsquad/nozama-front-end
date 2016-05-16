@@ -2,6 +2,7 @@
 
 const events = require('./api/events.js');
 const app = require('./api/apiurl.js');
+// const authUi = require('./api/ui.js');
 
 const displayProduct = function(product){
   const display = require('./templates/product.handlebars');
@@ -12,15 +13,12 @@ const displayProduct = function(product){
 const getProduct = function(id){
   $.ajax({
     url: app.api + "/products/" + id,
-    method: 'GET',
-    dataType: 'json'
   }).done(function(data){
     displayProduct(data.product);
   });
 };
 
 const displayProducts = function(products){
-  console.log('here!');
   const display = require('./templates/product-listing.handlebars');
   $('.content').append(display({products}));
   // $(".gallery-product").lazyload({
@@ -41,6 +39,6 @@ const getProducts = function(){
 };
 
 $(() => {
-  events.addHandlers();
   getProducts();
+  events.addHandlers();
 });

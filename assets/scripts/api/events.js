@@ -31,6 +31,12 @@ const addHandlers = () => {
     event.preventDefault();
     authApi.changePass(authUi.success, authUi.failure, data);
   });
+  $('#cart-add').on('click', function (event) {
+    // let data = getFormFields(this);
+    console.log('click!');
+    event.preventDefault();
+    // authApi.cartAdd(authUi.success, authUi.failure, data);
+  });
 };
 
 module.exports = {
