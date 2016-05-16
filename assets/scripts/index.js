@@ -3,28 +3,38 @@
 const events = require('./api/events.js');
 const app = require('./api/apiurl.js');
 
-$('.product-tile').on("click", function(){
-    $('#productModal').modal();
-});
+const displayProduct = function(product){
+  const display = require('./templates/product.handlebars');
+  $('.product-display').empty();
+  $('.product-display').append(display({product}));
+};
+
+const getProduct = function(id){
+  $.ajax({
+    url: app.api + "/products/" + id,
+    method: 'GET',
+    dataType: 'json'
+  }).done(function(data){
+    displayProduct(data.product);
+  });
+};
 
 const displayProducts = function(products){
   console.log('here!');
-  const productsTemplate = require('./templates/product-listing.handlebars');
-  $('.content').append(productsTemplate({products}));
+  const display = require('./templates/product-listing.handlebars');
+  $('.content').append(display({products}));
   // $(".gallery-product").lazyload({
   //   effect : "fadeIn"
   // });
-  // $('.product-tile').on("click", function(){
-  //   $('#productModal').modal();
-  //   getFlag($(this).data("id"));
-  // });
+  $('.product-tile').on("click", function(){
+    $('#productModal').modal();
+    getProduct($(this).data("id"));
+  });
 };
 
 const getProducts = function(){
   $.ajax({
     url: app.api + "/products",
-    method: 'GET',
-    dataType: 'json'
   }).done(function(data){
     displayProducts(data.products);
   });
