@@ -1,12 +1,14 @@
 'use strict';
 
 const events = require('./api/events.js');
+const app = require('./api/apiurl.js');
 
 $('.product-tile').on("click", function(){
     $('#productModal').modal();
 });
 
 const displayProducts = function(products){
+  console.log('here!');
   const productsTemplate = require('./templates/product-listing.handlebars');
   $('.content').append(productsTemplate({products}));
   // $(".gallery-product").lazyload({
@@ -21,8 +23,8 @@ const displayProducts = function(products){
 const getProducts = function(){
   $.ajax({
     url: app.api + "/products",
-    // method: 'GET',
-    // dataType: 'json'
+    method: 'GET',
+    dataType: 'json'
   }).done(function(data){
     displayProducts(data.products);
   });
@@ -30,4 +32,5 @@ const getProducts = function(){
 
 $(() => {
   events.addHandlers();
+  getProducts();
 });
