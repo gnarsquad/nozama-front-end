@@ -1,7 +1,46 @@
 'use strict';
 
-// user require with a reference to bundle the file and use it in this file
-// var example = require('./example');
+const events = require('./api/events.js');
+const app = require('./api/apiurl.js');
 
-// use require without a reference to ensure a file is bundled
-require('./example');
+const displayProduct = function(product){
+  const display = require('./templates/product.handlebars');
+  $('.product-display').empty();
+  $('.product-display').append(display({product}));
+};
+
+const getProduct = function(id){
+  $.ajax({
+    url: app.api + "/products/" + id,
+    method: 'GET',
+    dataType: 'json'
+  }).done(function(data){
+    displayProduct(data.product);
+  });
+};
+
+const displayProducts = function(products){
+  console.log('here!');
+  const display = require('./templates/product-listing.handlebars');
+  $('.content').append(display({products}));
+  // $(".gallery-product").lazyload({
+  //   effect : "fadeIn"
+  // });
+  $('.product-tile').on("click", function(){
+    $('#productModal').modal();
+    getProduct($(this).data("id"));
+  });
+};
+
+const getProducts = function(){
+  $.ajax({
+    url: app.api + "/products",
+  }).done(function(data){
+    displayProducts(data.products);
+  });
+};
+
+$(() => {
+  events.addHandlers();
+  getProducts();
+});
