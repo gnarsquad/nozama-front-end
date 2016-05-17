@@ -74,7 +74,4 @@ const getProducts = function(){
 $(() => {
   getProducts();
   events.addHandlers();
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip();
-  });
 });
