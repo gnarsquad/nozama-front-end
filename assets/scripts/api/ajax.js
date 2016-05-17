@@ -86,19 +86,6 @@ const updateCartItem = (success, failure, id, qty) => {
   .fail(failure);
 };
 
-const getCart = (success, failure) => {
-  $.ajax({
-    method: 'GET',
-    url: app.api + '/cart/' + app.user.cart,
-    dataType: 'json',
-    headers:{
-      Authorization: 'Token token=' + app.user.token,
-    },
-  })
-  .done(success)
-  .fail(failure);
-};
-
 const deleteCartItem = (success, failure, id) => {
   $.ajax({
     url: app.api + '/cart/',
@@ -196,7 +183,6 @@ module.exports = {
   signOut,
   changePass,
   addToCart,
-  getCart,
   updateCartItem,
   deleteCartItem,
   getOrders,
