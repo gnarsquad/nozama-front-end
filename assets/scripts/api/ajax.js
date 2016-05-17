@@ -54,7 +54,7 @@ const changePass = (success, failure, data) => {
 const addToCart = (success, failure, id, name, price, qty, img) => {
   $.ajax({
     method: 'POST',
-    url: app.api + '/carts/',
+    url: app.api + '/cart/',
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
@@ -75,7 +75,7 @@ const addToCart = (success, failure, id, name, price, qty, img) => {
 const getCart = (success, failure) => {
   $.ajax({
     method: 'GET',
-    url: app.api + '/carts/' + app.user.cart,
+    url: app.api + '/cart/' + app.user.cart,
     dataType: 'json',
     headers:{
       Authorization: 'Token token=' + app.user.token,
@@ -89,7 +89,7 @@ const getCart = (success, failure) => {
 const updateCart = (success, failure, data) => {
   $.ajax({
     method: "PATCH",
-    url: app.api + '/carts/' + app.user.cart,
+    url: app.api + '/cart/' + app.user.cart,
     data,
     headers: {
       Authorization: 'Token token='+ app.user.token,
@@ -101,7 +101,7 @@ const updateCart = (success, failure, data) => {
 
 const deleteCart = (success, failure) => {
   $.ajax({
-    url: app.api + '/carts/' + app.user.cart,
+    url: app.api + '/cart/' + app.user.cart,
     method: "DELETE",
     headers: {
       Authorization: 'Token token=' + app.user.token,
