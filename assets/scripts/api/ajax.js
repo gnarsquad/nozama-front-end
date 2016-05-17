@@ -51,7 +51,7 @@ const changePass = (success, failure, data) => {
 // CART AJAX STARTS
 
 
-const cartAdd = (success, failure, id, name, price, qty) => {
+const addToCart = (success, failure, id, name, price, qty) => {
   $.ajax({
     method: 'POST',
     url: app.api + '/carts/',
@@ -69,20 +69,6 @@ const cartAdd = (success, failure, id, name, price, qty) => {
     }
   }).done(success)
   .fail(failure);
-  console.log(app.user.carts);
-};
-
-const getCarts = (success, failure) => {
-  $.ajax({
-    method: 'GET',
-    url: app.api + '/carts',
-    dataType: 'json',
-    headers:{
-      Authorization: 'Token token=' + app.user.token,
-    },
-  })
-  .done(success)
-  .fail(failure);
 };
 
 const getCart = (success, failure) => {
@@ -98,19 +84,6 @@ const getCart = (success, failure) => {
   .fail(failure);
 };
 
-const createCart = (success, failure, data) => {
-  $.ajax({
-    method: "POST",
-    url: app.api + '/carts',
-    dataType: 'json',
-    headers: {
-      Authorization: 'Token token='+ app.user.token,
-    },
-    data,
-  })
-  .done(success)
-  .fail(failure);
-};
 
 const updateCart = (success, failure, data) => {
   $.ajax({
@@ -211,15 +184,14 @@ const deleteOrder = (success, failure) => {
 
 // ORDERS AJAX ENDS
 
+
 module.exports = {
   signUp,
   signIn,
   signOut,
   changePass,
-  cartAdd,
-  getCarts,
+  addToCart,
   getCart,
-  createCart,
   updateCart,
   deleteCart,
   getOrders,
