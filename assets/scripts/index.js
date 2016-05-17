@@ -8,6 +8,7 @@ const authApi = require('./api/ajax.js');
 const displayCart = function() {
   const display = require('./templates/cart.handlebars');
   let cart = app.user.cart;
+  $('.product-display').empty();
   $('.cartDisplay').append(display({cart}));
 };
 
@@ -76,6 +77,9 @@ const getProducts = function(){
 $(() => {
   getProducts();
   events.addHandlers();
+  $('#open-cart').on('click', function() {
+    displayCart();
+  });
 });
 
 module.exports = displayCart;
