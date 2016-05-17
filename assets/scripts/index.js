@@ -24,7 +24,7 @@ const authApi = require('./api/ajax.js');
       console.log(id + ' ' + name + ' ' + price + '  qty: ' + qty);
       if(inCart === 0) {
         console.log('add to cart!');
-        // authApi.cartAdd(authUi.success, authUi.failure, id, name, price, qty);
+        // authApi.addToCart(authUi.success, authUi.failure, id, name, price, qty);
       } else {
         console.log('update cart!');
         // authApi.cartUpdate(authUi.success, authUi.failure, id, name, price, qty);
