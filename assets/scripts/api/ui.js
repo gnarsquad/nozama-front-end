@@ -50,6 +50,63 @@ const failure = (error) => {
   console.log(app.user._id);
 };
 
+
+// CARTS UI STARTS
+
+
+const getCartsSuccess = (data) => {
+  app.carts = data.carts;
+  console.log(data);
+};
+
+const getCartSuccess = (data) => {
+  app.cart = data.cart;
+};
+
+const createCartSuccess = (data) => {
+  app.cart = data.cart;
+};
+
+const updateCartSuccess = (data) => {
+  console.log(data);
+  console.log('successfully updated cart');
+};
+
+const deleteCartSuccess = () => {
+  app.cart = null;
+  console.log('successfully deleted cart');
+};
+
+
+// CARTS UI ENDS
+
+
+// ORDERS UI STARTS
+
+
+const getOrdersSuccess = (data) => {
+  app.orders = data.orders;
+  console.log(data);
+};
+
+const getOrderSuccess = (data) => {
+  app.order = data.order;
+};
+
+const createOrderSuccess = (data) => {
+  app.order = data.order;
+};
+
+const updateOrderSuccess = (data) => {
+  console.log(data);
+  console.log('successfully updated order');
+};
+
+const deleteOrderSuccess = () => {
+  app.order = null;
+  console.log('successfully deleted order');
+};
+
 module.exports = {
   failure,
   success,
@@ -57,4 +114,14 @@ module.exports = {
   signOutSuccess,
   signUpSuccess,
   signUpFailure,
+  getCartsSuccess,
+  getCartSuccess,
+  createCartSuccess,
+  updateCartSuccess,
+  deleteCartSuccess,
+  getOrdersSuccess,
+  getOrderSuccess,
+  createOrderSuccess,
+  updateOrderSuccess,
+  deleteOrderSuccess
 };

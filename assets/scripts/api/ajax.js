@@ -47,6 +47,10 @@ const changePass = (success, failure, data) => {
   .fail(failure);
 };
 
+
+// CART AJAX STARTS
+
+
 const cartAdd = (success, failure, id, name, price, qty) => {
   $.ajax({
     method: 'POST',
@@ -68,11 +72,159 @@ const cartAdd = (success, failure, id, name, price, qty) => {
   console.log(app.user.carts);
 };
 
+const getCarts = (success, failure) => {
+  $.ajax({
+    method: 'GET',
+    url: app.api + '/carts',
+    dataType: 'json',
+    headers:{
+      Authorization: 'Token token=' + app.user.token,
+    },
+  })
+  .done(success)
+  .fail(failure);
+};
+
+const getCart = (success, failure) => {
+  $.ajax({
+    method: 'GET',
+    url: app.api + '/carts/' + app.user.cart,
+    dataType: 'json',
+    headers:{
+      Authorization: 'Token token=' + app.user.token,
+    },
+  })
+  .done(success)
+  .fail(failure);
+};
+
+const createCart = (success, failure, data) => {
+  $.ajax({
+    method: "POST",
+    url: app.api + '/carts',
+    dataType: 'json',
+    headers: {
+      Authorization: 'Token token='+ app.user.token,
+    },
+    data,
+  })
+  .done(success)
+  .fail(failure);
+};
+
+const updateCart = (success, failure, data) => {
+  $.ajax({
+    method: "PATCH",
+    url: app.api + '/carts/' + app.user.cart,
+    data,
+    headers: {
+      Authorization: 'Token token='+ app.user.token,
+    },
+  })
+  .done(success)
+  .fail(failure);
+};
+
+const deleteCart = (success, failure) => {
+  $.ajax({
+    url: app.api + '/carts/' + app.user.cart,
+    method: "DELETE",
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  })
+  .done(success)
+  .fail(failure);
+};
+
+
+// CART AJAX ENDS
+
+
+// ORDERS AJAX STARTS
+
+
+const getOrders = (success, failure) => {
+  $.ajax({
+    method: 'GET',
+    url: app.api + '/orders',
+    dataType: 'json',
+    headers:{
+      Authorization: 'Token token=' + app.user.token,
+    },
+  })
+  .done(success)
+  .fail(failure);
+};
+
+const getOrder = (success, failure) => {
+  $.ajax({
+    method: 'GET',
+    url: app.api + '/orders/' + app.order._id,
+    dataType: 'json',
+    headers:{
+      Authorization: 'Token token=' + app.user.token,
+    },
+  })
+  .done(success)
+  .fail(failure);
+};
+
+const createOrder = (success, failure, data) => {
+  $.ajax({
+    method: "POST",
+    url: app.api + '/orders',
+    dataType: 'json',
+    headers: {
+      Authorization: 'Token token='+ app.user.token,
+    },
+    data,
+  })
+  .done(success)
+  .fail(failure);
+};
+
+const updateOrder = (success, failure, data) => {
+  $.ajax({
+    method: "PATCH",
+    url: app.api + '/orders/' + app.order._id,
+    data,
+    headers: {
+      Authorization: 'Token token='+ app.user.token,
+    },
+  })
+  .done(success)
+  .fail(failure);
+};
+
+const deleteOrder = (success, failure) => {
+  $.ajax({
+    url: app.api + '/orders/' + app.order._id,
+    method: "DELETE",
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  })
+  .done(success)
+  .fail(failure);
+};
+
+// ORDERS AJAX ENDS
 
 module.exports = {
   signUp,
   signIn,
   signOut,
   changePass,
-  cartAdd
+  cartAdd,
+  getCarts,
+  getCart,
+  createCart,
+  updateCart,
+  deleteCart,
+  getOrders,
+  getOrder,
+  createOrder,
+  updateOrder,
+  deleteOrder
 };
