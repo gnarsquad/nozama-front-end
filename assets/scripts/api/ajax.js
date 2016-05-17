@@ -186,6 +186,27 @@ const deleteOrder = (success, failure) => {
 // ORDERS AJAX ENDS
 
 
+// STRIPE AJAX STARTS
+
+const stripeCharge = function(credentials) {
+  $.ajax({
+    url: app.api + '/charge',
+    method: "POST",
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    dataType: 'json',
+    data: credentials
+  })
+  .done(function(data) {
+    console.log(data);
+  })
+  .fail(function(failure) {
+    console.error(failure);
+  });
+};
+
+
 module.exports = {
   signUp,
   signIn,
@@ -199,5 +220,6 @@ module.exports = {
   getOrder,
   createOrder,
   updateOrder,
-  deleteOrder
+  deleteOrder,
+  stripeCharge
 };
