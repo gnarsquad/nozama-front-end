@@ -88,7 +88,7 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <!--<h5 class="loggedin-hide">Sign in to add this product to your cart!</h5>-->
-            <button id="cart-add" type="button" class="btn btn-success loggedout-hide" prod-id="" prod-name="" prod-price="">Add to cart</button>
+            <button id="cart-add" type="button" class="btn btn-success loggedout-hide">Add to cart</button>
         </div>
       </div>
     </div>
@@ -110,14 +110,11 @@
                 <div class="col-xs-3">
                   <h4>Image</h4>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-xs-6">
                   <h4>Name</h4>
                 </div>
                 <div class="col-xs-3">
                   <h4>Price</h4>
-                </div>
-                <div class="col-xs-2">
-                  <h4>Qty</h4>
                 </div>
               </div>
             <div class="well well-sm">
@@ -125,18 +122,23 @@
                 <div class="col-xs-3">
                   <img src="assets/images/placeholder.png" class="img-responsive img-cart" data-id="" data-original="" name="" />
                 </div>
-                <div class="col-xs-4">
+                <div class="col-xs-6">
                   <h4>Product name</h4>
                 </div>
                 <div class="col-xs-3">
                   <h4>$12.34</h4>
                 </div>
-                <div class="col-xs-2">
-                  <div class="input-group">
-                    <h4>1</h4>
-                    <a style="display: block">Change</a>
-                    <a style="display: block">Delete</a>
-                  </div>
+              </div>
+              <hr style="margin-top: 5px; margin-bottom: 5px;">
+              <div class="row">
+                <div class="col-xs-12">
+                  <h4 class=:"text-right">Quantity: <span class="label label-primary" data-toggle="tooltip" data-placement="top" title="Click to change quantity">1</span>
+                    <button type="button" class="btn btn-default">
+                      <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Change quantity
+                    </button>
+                    <button type="button" class="btn btn-default">
+                      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete item
+                    </button>                    
                 </div>
               </div>
             </div>
