@@ -60,12 +60,30 @@ const addToCart = (success, failure, id, name, price, qty, img) => {
     },
     dataProcessing: false,
     data: {
-      lineItems: {
+      lineItem: {
         quantity: qty,
         productid: id,
         name: name,
         price: price,
         image: img
+      }
+    }
+  }).done(success)
+  .fail(failure);
+};
+
+const updateCartItem = (success, failure, id, qty) => {
+  $.ajax({
+    method: 'PATCH',
+    url: app.api + '/cart/',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    dataProcessing: false,
+    data: {
+      lineItem: {
+        productid: id,
+        quantity: qty
       }
     }
   }).done(success)
@@ -85,27 +103,19 @@ const getCart = (success, failure) => {
   .fail(failure);
 };
 
-
-const updateCart = (success, failure, data) => {
+const deleteCartItem = (success, failure, id) => {
   $.ajax({
-    method: "PATCH",
-    url: app.api + '/cart/' + app.user.cart,
-    data,
-    headers: {
-      Authorization: 'Token token='+ app.user.token,
-    },
-  })
-  .done(success)
-  .fail(failure);
-};
-
-const deleteCart = (success, failure) => {
-  $.ajax({
-    url: app.api + '/cart/' + app.user.cart,
+    url: app.api + '/cart/',
     method: "DELETE",
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
+    dataProcessing: false,
+    data: {
+      // lineItem: {
+        productid: id
+      // }
+    }
   })
   .done(success)
   .fail(failure);
@@ -214,8 +224,8 @@ module.exports = {
   changePass,
   addToCart,
   getCart,
-  updateCart,
-  deleteCart,
+  updateCartItem,
+  deleteCartItem,
   getOrders,
   getOrder,
   createOrder,

@@ -5,33 +5,49 @@ const app = require('./api/apiurl.js');
 const authUi = require('./api/ui.js');
 const authApi = require('./api/ajax.js');
 
-  const checkCart = function(cart, product) {
-    let inCart = 0;
-    for (var i = 0; i < cart.length; i++) {
-      if(cart[i].productid === product._id) {
-        console.log('got a match!');
-        inCart = parseInt(cart[i].quantity);
-        console.log(inCart);
-        break;
-      }
+const displayCart = function() {
+  const display = require('./templates/cart.handlebars');
+  let cart = app.user.cart;
+  $('.cartDisplay').empty();
+  if(cart.length > 0) {
+    $('.no-items').addClass('hidden');
+    $('.cartDisplay').append(display({cart}));
+  } else {
+    $('.no-items').removeClass('hidden');
+  }
+  $('.delete-item').on('click', function(event) {
+    let id = $(this).data('id');
+    console.log(id);
+    event.preventDefault();
+    authApi.deleteCartItem(authUi.success, authUi.failure, id);
+  });
+};
+
+const checkCart = function(cart, product) {
+  let inCart = 0;
+  for (var i = 0; i < cart.length; i++) {
+    if(cart[i].productid === product._id) {
+      inCart = parseInt(cart[i].quantity);
+      break;
     }
-    $('#cart-add').on('click', function (event) {
-      let id = product._id;
-      let name = product.name;
-      let price = product.price;
-      let img = product.image;
-      let qty = parseInt($('#quantity-select').val()) + inCart;
-      event.preventDefault();
-      console.log(id + ' ' + name + ' ' + price + ' ' + qty + ' ' + img);
-      if(inCart === 0) {
-        console.log('add to cart!');
-        authApi.addToCart(authUi.success, authUi.failure, id, name, price, qty, img);
-      } else {
-        console.log('update cart!');
-        // authApi.cartUpdate(authUi.success, authUi.failure, id, name, price, qty);
-      }
-    });
-  };
+  }
+  $('#cart-add').on('click', function (event) {
+    let id = product._id;
+    let name = product.name;
+    let price = product.price;
+    let img = product.image;
+    let qty = parseInt($('#quantity-select').val()) + inCart;
+    event.preventDefault();
+    console.log(id + ' ' + name + ' ' + price + ' ' + qty + ' ' + img);
+    if(inCart === 0) {
+      console.log('add to cart!');
+      authApi.addToCart(authUi.success, authUi.failure, id, name, price, qty, img);
+    } else {
+      console.log('update cart!');
+      // authApi.updateCartItem(authUi.success, authUi.failure, id, qty);
+    }
+  });
+};
 
 const displayProduct = function(product){
   const display = require('./templates/product.handlebars');
@@ -72,4 +88,9 @@ const getProducts = function(){
 $(() => {
   getProducts();
   events.addHandlers();
+  $('#open-cart').on('click', function() {
+    displayCart();
+  });
 });
+
+module.exports = displayCart;

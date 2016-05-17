@@ -87,8 +87,6 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <!--<h5 class="loggedin-hide">Sign in to add this product to your cart!</h5>-->
-            <button id="cart-add" type="button" class="btn btn-success loggedout-hide">Add to cart</button>
         </div>
       </div>
     </div>
@@ -104,19 +102,19 @@
           <h3 class="modal-title">Your shopping cart</h3>
         </div>
         <div class="modal-body">
-          <h4>Your shopping cart is empty.</h4>
-          <div class="cartDisplay">
+          <h4 class="hidden no-">Your shopping cart is empty.</h4>
             <div class="row">
-                <div class="col-xs-3">
-                  <h4>Image</h4>
-                </div>
-                <div class="col-xs-6">
-                  <h4>Name</h4>
-                </div>
-                <div class="col-xs-3">
-                  <h4>Price</h4>
-                </div>
+              <div class="col-xs-3">
+                <h4>Image</h4>
               </div>
+              <div class="col-xs-6">
+                <h4>Name</h4>
+              </div>
+              <div class="col-xs-3">
+                <h4>Price</h4>
+              </div>
+            </div>
+          <div class="cartDisplay">
             <div class="well well-sm">
               <div class="row">
                 <div class="col-xs-3">
@@ -140,24 +138,6 @@
                   <button type="button" class="btn btn-default">
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
                   </button>
-                </div>
-              </div>
-            </div>
-            <div class="well well-sm">
-              <div class="row">
-                <div class="col-xs-3">
-                  <img src="assets/images/placeholder.png" class="img-responsive img-cart" data-id="" data-original="" name="" />
-                </div>
-                <div class="col-xs-4">
-                  <h4>Product name</h4>
-                </div>
-                <div class="col-xs-3">
-                  <h4>$12.34</h4>
-                </div>
-                <div class="col-xs-2">
-                  <div class="input-group">
-                    <h4>1</h4>
-                  </div>
                 </div>
               </div>
             </div>
@@ -281,7 +261,7 @@
         <button type="submit" class="btn btn-success navbar-btn loggedin-hide" id="sign-up-btn" data-toggle="modal" data-target="#sign-up-modal">
           Sign up!
         </button>
-        <button type="button" class="btn btn-warning navbar-btn" data-toggle="modal" data-target="#cartModal">
+        <button id="open-cart" type="button" class="btn btn-warning navbar-btn" data-toggle="modal" data-target="#cartModal">
           <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Cart
         </button>
         <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#ordersModal">
