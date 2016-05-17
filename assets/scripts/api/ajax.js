@@ -51,7 +51,7 @@ const changePass = (success, failure, data) => {
 // CART AJAX STARTS
 
 
-const addToCart = (success, failure, id, name, price, qty) => {
+const addToCart = (success, failure, id, name, price, qty, img) => {
   $.ajax({
     method: 'POST',
     url: app.api + '/carts/',
@@ -64,7 +64,8 @@ const addToCart = (success, failure, id, name, price, qty) => {
         quantity: qty,
         productid: id,
         name: name,
-        price: price
+        price: price,
+        image: img
       }
     }
   }).done(success)
