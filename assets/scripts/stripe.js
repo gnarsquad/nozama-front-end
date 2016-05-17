@@ -13,7 +13,7 @@ const cartTotal = function () {
   app.user.cart.total = total;
 }
 
-// stripe handlers
+// stripe handler variable
 
 let handler = StripeCheckout.configure({
     key: 'pk_test_La0sDwdMY4vZwGyewISFrpm4',
@@ -29,11 +29,13 @@ let handler = StripeCheckout.configure({
   }
 });
 
+// stripe handlers
+
 $('#customButton').on('click', function(e) {
     // Open Checkout with further options:
   handler.open({
     name: 'Nozama',
-    description: 'disregard financial responsibility, aquire trinkets',
+    description: 'disregard financial responsibility, acquire trinkets',
     amount: app.user.cart.total
   });
   e.preventDefault();
