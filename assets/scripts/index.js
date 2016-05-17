@@ -8,8 +8,19 @@ const authApi = require('./api/ajax.js');
 const displayCart = function() {
   const display = require('./templates/cart.handlebars');
   let cart = app.user.cart;
-  $('.product-display').empty();
-  $('.cartDisplay').append(display({cart}));
+  $('.cartDisplay').empty();
+  if(cart.length > 0) {
+    $('.no-items').addClass('hidden');
+    $('.cartDisplay').append(display({cart}));
+  } else {
+    $('.no-items').removeClass('hidden');
+  }
+  $('.delete-item').on('click', function(event) {
+    let id = $(this).data('id');
+    console.log(id);
+    event.preventDefault();
+    authApi.deleteCartItem(authUi.success, authUi.failure, id);
+  });
 };
 
 const checkCart = function(cart, product) {
