@@ -9,9 +9,7 @@ const authApi = require('./api/ajax.js');
     let inCart = 0;
     for (var i = 0; i < cart.length; i++) {
       if(cart[i].productid === product._id) {
-        console.log('got a match!');
         inCart = parseInt(cart[i].quantity);
-        console.log(inCart);
         break;
       }
     }
@@ -28,7 +26,7 @@ const authApi = require('./api/ajax.js');
         authApi.addToCart(authUi.success, authUi.failure, id, name, price, qty, img);
       } else {
         console.log('update cart!');
-        // authApi.cartUpdate(authUi.success, authUi.failure, id, name, price, qty);
+        // authApi.updateCartItem(authUi.success, authUi.failure, id, qty);
       }
     });
   };
