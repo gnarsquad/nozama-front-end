@@ -72,9 +72,9 @@ const addToCart = (success, failure, id, name, price, qty, img) => {
   .fail(failure);
 };
 
-const updateCartItem = (success, failure, id) => {
+const updateCartItem = (success, failure, id, qty) => {
   $.ajax({
-    method: 'POST',
+    method: 'PATCH',
     url: app.api + '/cart/',
     headers: {
       Authorization: 'Token token=' + app.user.token,
@@ -83,6 +83,7 @@ const updateCartItem = (success, failure, id) => {
     data: {
       lineItem: {
         productid: id,
+        quantity: qty
       }
     }
   }).done(success)
@@ -102,13 +103,19 @@ const getCart = (success, failure) => {
   .fail(failure);
 };
 
-const deleteCartItem = (success, failure) => {
+const deleteCartItem = (success, failure, id) => {
   $.ajax({
-    url: app.api + '/cart/' + app.user.cart,
+    url: app.api + '/cart/',
     method: "DELETE",
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
+    dataProcessing: false,
+    data: {
+      // lineItem: {
+        productid: id
+      // }
+    }
   })
   .done(success)
   .fail(failure);

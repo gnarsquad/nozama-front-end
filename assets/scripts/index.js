@@ -5,31 +5,37 @@ const app = require('./api/apiurl.js');
 const authUi = require('./api/ui.js');
 const authApi = require('./api/ajax.js');
 
-  const checkCart = function(cart, product) {
-    let inCart = 0;
-    for (var i = 0; i < cart.length; i++) {
-      if(cart[i].productid === product._id) {
-        inCart = parseInt(cart[i].quantity);
-        break;
-      }
+const displayCart = function() {
+  const display = require('./templates/cart.handlebars');
+  let cart = app.user.cart;
+  $('.cartDisplay').append(display({cart}));
+};
+
+const checkCart = function(cart, product) {
+  let inCart = 0;
+  for (var i = 0; i < cart.length; i++) {
+    if(cart[i].productid === product._id) {
+      inCart = parseInt(cart[i].quantity);
+      break;
     }
-    $('#cart-add').on('click', function (event) {
-      let id = product._id;
-      let name = product.name;
-      let price = product.price;
-      let img = product.image;
-      let qty = parseInt($('#quantity-select').val()) + inCart;
-      event.preventDefault();
-      console.log(id + ' ' + name + ' ' + price + ' ' + qty + ' ' + img);
-      if(inCart === 0) {
-        console.log('add to cart!');
-        authApi.addToCart(authUi.success, authUi.failure, id, name, price, qty, img);
-      } else {
-        console.log('update cart!');
-        // authApi.updateCartItem(authUi.success, authUi.failure, id, qty);
-      }
-    });
-  };
+  }
+  $('#cart-add').on('click', function (event) {
+    let id = product._id;
+    let name = product.name;
+    let price = product.price;
+    let img = product.image;
+    let qty = parseInt($('#quantity-select').val()) + inCart;
+    event.preventDefault();
+    console.log(id + ' ' + name + ' ' + price + ' ' + qty + ' ' + img);
+    if(inCart === 0) {
+      console.log('add to cart!');
+      authApi.addToCart(authUi.success, authUi.failure, id, name, price, qty, img);
+    } else {
+      console.log('update cart!');
+      // authApi.updateCartItem(authUi.success, authUi.failure, id, qty);
+    }
+  });
+};
 
 const displayProduct = function(product){
   const display = require('./templates/product.handlebars');
@@ -71,3 +77,5 @@ $(() => {
   getProducts();
   events.addHandlers();
 });
+
+module.exports = displayCart;
