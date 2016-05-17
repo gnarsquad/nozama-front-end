@@ -60,13 +60,11 @@ const addToCart = (success, failure, id, name, price, qty, img) => {
     },
     dataProcessing: false,
     data: {
-      lineItem: {
-        quantity: qty,
-        productid: id,
-        name: name,
-        price: price,
-        image: img
-      }
+      quantity: qty,
+      productid: id,
+      name: name,
+      price: price,
+      image: img
     }
   }).done(success)
   .fail(failure);
@@ -81,10 +79,8 @@ const updateCartItem = (success, failure, id, qty) => {
     },
     dataProcessing: false,
     data: {
-      lineItem: {
-        productid: id,
-        quantity: qty
-      }
+      productid: id,
+      quantity: qty
     }
   }).done(success)
   .fail(failure);
@@ -112,9 +108,7 @@ const deleteCartItem = (success, failure, id) => {
     },
     dataProcessing: false,
     data: {
-      // lineItem: {
-        productid: id
-      // }
+      productid: id
     }
   })
   .done(success)

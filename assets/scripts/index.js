@@ -8,12 +8,15 @@ const authApi = require('./api/ajax.js');
 const displayCart = function() {
   const display = require('./templates/cart.handlebars');
   let cart = app.user.cart;
+  console.log(cart);
   $('.cartDisplay').empty();
   if(cart.length > 0) {
     $('.no-items').addClass('hidden');
+    $('.has-items').removeClass('hidden');
     $('.cartDisplay').append(display({cart}));
   } else {
     $('.no-items').removeClass('hidden');
+    $('.has-items').addClass('hidden');
   }
   $('.delete-item').on('click', function(event) {
     let id = $(this).data('id');
@@ -53,7 +56,6 @@ const displayProduct = function(product){
   const display = require('./templates/product.handlebars');
   $('.product-display').empty();
   $('.product-display').append(display({product}));
-  console.log(app.user.cart);
   checkCart(app.user.cart, product);
 };
 
