@@ -28,3 +28,18 @@ let handler = StripeCheckout.configure({
     stripeCharge(credentials);
   }
 });
+
+$('#customButton').on('click', function(e) {
+    // Open Checkout with further options:
+  handler.open({
+    name: 'Nozama',
+    description: 'disregard financial responsibility, aquire trinkets',
+    amount: app.user.cart.total
+  });
+  e.preventDefault();
+});
+
+  // Close Checkout on page navigation:
+$(window).on('popstate', function() {
+  handler.close();
+});
