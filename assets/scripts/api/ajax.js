@@ -69,7 +69,6 @@ const cartAdd = (success, failure, id, name, price, qty) => {
     }
   }).done(success)
   .fail(failure);
-  console.log(app.user.carts);
 };
 
 const getCarts = (success, failure) => {

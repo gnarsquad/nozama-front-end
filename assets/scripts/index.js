@@ -4,6 +4,15 @@ const events = require('./api/events.js');
 const app = require('./api/apiurl.js');
 // const authUi = require('./api/ui.js');
 
+  const checkCart = function(cart, productid) {
+    for (var i = 0; i < cart.length; i++) {
+      if(cart[i].productid === productid) {
+        console.log('got a match!');
+        break;
+      }
+    }
+  };
+
 const displayProduct = function(product){
   const display = require('./templates/product.handlebars');
   $('.product-display').empty();
@@ -11,6 +20,8 @@ const displayProduct = function(product){
   $('#cart-add').attr("prod-id", product._id);
   $('#cart-add').attr("prod-name", product.name);
   $('#cart-add').attr("prod-price", product.price);
+  console.log(app.user.cart);
+  checkCart(app.user.cart, product._id);
 };
 
 const getProduct = function(id){
