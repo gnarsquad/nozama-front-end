@@ -5,8 +5,9 @@ const app = require('./api/apiurl.js');
 const authUi = require('./api/ui.js');
 const authApi = require('./api/ajax.js');
 
-const displayCart = function(cart) {
+const displayCart = function() {
   const display = require('./templates/cart.handlebars');
+  let cart = app.user.cart;
   console.log(cart);
   $('.cartDisplay').empty();
   if(cart.length > 0) {
@@ -25,15 +26,14 @@ const displayCart = function(cart) {
   });
 };
 
-const getCart = function(){
-  console.log(app.user.cart);
-  $.ajax({
-    url: app.api + "/cart",
-    method: 'GET',
-  }).done(function(data){
-    displayCart(data);
-  });
-};
+// const getCart = function(){
+//   $.ajax({
+//     url: app.api + "/cart",
+//     method: 'GET',
+//   }).done(function(data){
+//     displayCart(data);
+//   });
+// };
 
 const checkCart = function(cart, product) {
   let inCart = 0;
@@ -100,8 +100,8 @@ $(() => {
   getProducts();
   events.addHandlers();
   $('#open-cart').on('click', function() {
-    getCart();
-    // displayCart();
+    // getCart();
+    displayCart();
   });
 });
 
