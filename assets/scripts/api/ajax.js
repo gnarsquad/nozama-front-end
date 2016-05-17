@@ -88,7 +88,7 @@ const getCarts = (success, failure) => {
 const getCart = (success, failure) => {
   $.ajax({
     method: 'GET',
-    url: app.api + '/carts/' + app.cart._id,
+    url: app.api + '/carts/' + app.user.cart,
     dataType: 'json',
     headers:{
       Authorization: 'Token token=' + app.user.token,
@@ -115,7 +115,7 @@ const createCart = (success, failure, data) => {
 const updateCart = (success, failure, data) => {
   $.ajax({
     method: "PATCH",
-    url: app.api + '/carts/' + app.cart._id,
+    url: app.api + '/carts/' + app.user.cart,
     data,
     headers: {
       Authorization: 'Token token='+ app.user.token,
@@ -127,7 +127,7 @@ const updateCart = (success, failure, data) => {
 
 const deleteCart = (success, failure) => {
   $.ajax({
-    url: app.api + '/carts/' + app.cart._id,
+    url: app.api + '/carts/' + app.user.cart,
     method: "DELETE",
     headers: {
       Authorization: 'Token token=' + app.user.token,
