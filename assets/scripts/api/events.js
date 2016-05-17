@@ -31,14 +31,6 @@ const addHandlers = () => {
     event.preventDefault();
     authApi.changePass(authUi.success, authUi.failure, data);
   });
-  // $('#cart-add').on('click', function (event) {
-  //   let id = $(this).attr("prod-id");
-  //   let name = $(this).attr("prod-name");
-  //   let price = $(this).attr("prod-price");
-  //   let qty = $('#quantity-select').val();
-  //   event.preventDefault();
-  //   authApi.cartAdd(authUi.success, authUi.failure, id, name, price, qty);
-  // });
 };
 
 module.exports = {

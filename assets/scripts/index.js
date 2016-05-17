@@ -19,12 +19,13 @@ const authApi = require('./api/ajax.js');
       let id = product._id;
       let name = product.name;
       let price = product.price;
+      let img = product.image;
       let qty = parseInt($('#quantity-select').val()) + inCart;
       event.preventDefault();
-      console.log(id + ' ' + name + ' ' + price + '  qty: ' + qty);
+      console.log(id + ' ' + name + ' ' + price + ' ' + qty + ' ' + img);
       if(inCart === 0) {
         console.log('add to cart!');
-        // authApi.addToCart(authUi.success, authUi.failure, id, name, price, qty);
+        authApi.addToCart(authUi.success, authUi.failure, id, name, price, qty, img);
       } else {
         console.log('update cart!');
         // authApi.cartUpdate(authUi.success, authUi.failure, id, name, price, qty);
@@ -36,9 +37,6 @@ const displayProduct = function(product){
   const display = require('./templates/product.handlebars');
   $('.product-display').empty();
   $('.product-display').append(display({product}));
-  // $('#cart-add').attr("prod-id", product._id);
-  // $('#cart-add').attr("prod-name", product.name);
-  // $('#cart-add').attr("prod-price", product.price);
   console.log(app.user.cart);
   checkCart(app.user.cart, product);
 };
