@@ -14,6 +14,7 @@ const cartTotal = function() {
     $('.item-total').each(function(){
       sum += parseFloat($(this).text());
     });
+    app.sum = parseInt(sum*100);
     return sum;
   });
 };
@@ -110,6 +111,11 @@ const getCartCheck = function(product){
 
 module.exports = {
   checkCart,
+<<<<<<< 72330ae4ce419ea3fcf5b5ad1457f72fe1425bf2
   getCartCheck,
   getCartDisplay
+=======
+  getCart,
+  cartTotal
+>>>>>>> Add app.sum to cartTotal function
 };
