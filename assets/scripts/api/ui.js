@@ -72,11 +72,6 @@ const updateCartSuccess = (data) => {
   console.log('successfully updated cart');
 };
 
-const deleteCartSuccess = () => {
-  app.cart = null;
-  console.log('successfully deleted cart');
-};
-
 
 // CARTS UI ENDS
 
@@ -97,15 +92,6 @@ const createOrderSuccess = (data) => {
   app.order = data.order;
 };
 
-const updateOrderSuccess = (data) => {
-  console.log(data);
-  console.log('successfully updated order');
-};
-
-const deleteOrderSuccess = () => {
-  app.order = null;
-  console.log('successfully deleted order');
-};
 
 module.exports = {
   failure,
@@ -118,10 +104,7 @@ module.exports = {
   getCartSuccess,
   createCartSuccess,
   updateCartSuccess,
-  deleteCartSuccess,
   getOrdersSuccess,
   getOrderSuccess,
   createOrderSuccess,
-  updateOrderSuccess,
-  deleteOrderSuccess
 };
