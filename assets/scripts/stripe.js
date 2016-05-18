@@ -2,6 +2,7 @@
 
 const app = require('./api/apiurl.js');
 const authApi = require('./api/ajax.js');
+const cartJS = require('./cart.js');
 
 // total prices for stripeCharge
 
@@ -25,9 +26,9 @@ const authApi = require('./api/ajax.js');
 //   };
 
 // stripe handler variable
-let cartTotal = parseInt($('#cart-total').text());
-console.log(cartTotal);
-console.log($('#cart-total').text());
+
+let cartSum = parseInt($('#cart-total').text());
+console.log(cartSum);
 console.log(typeof($('#cart-total').text()));
 
 let handler = StripeCheckout.configure({
@@ -37,7 +38,7 @@ let handler = StripeCheckout.configure({
     token: function(token) {
       let credentials = {
       stripeToken: token.id,
-      amount: cartTotal * 100
+      amount: app.sum
     };
     console.log(credentials);
     authApi.stripeCharge(credentials);
@@ -53,7 +54,7 @@ const addStripeHandlers = () => {
     handler.open({
       name: 'Nozama',
       description: 'disregard finances, acquire trinkets',
-      amount: cartTotal * 100
+      amount: app.sum
     });
     e.preventDefault();
   });
