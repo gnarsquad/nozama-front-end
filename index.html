@@ -124,7 +124,9 @@
         <div class="modal-footer">
           <button id="empty-cart" type="button" class="btn btn-default">Clear cart</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="checkout-btn" type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#checkoutModal">Proceed to Checkout</button>
+          <script src="https://checkout.stripe.com/checkout.js"></script>
+          <button type="button" class="btn btn-success checkout" id="checkoutBtn">Check Out</button>
+          <!--<button id="checkout-btn" type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#checkoutModal">Proceed to Checkout</button>-->
         </div>
       </div>
     </div>
