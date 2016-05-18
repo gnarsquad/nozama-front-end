@@ -1,7 +1,8 @@
 'use strict';
 
 const app = require('./apiurl.js');
-// const index = require('../index.js');
+const cartActions = require('../cart.js');
+const index = require('../index.js');
 // const comments = require('../comments.js');
 
 
@@ -54,22 +55,12 @@ const failure = (error) => {
 // CARTS UI STARTS
 
 
-const getCartsSuccess = (data) => {
-  app.carts = data.carts;
-  console.log(data);
-};
-
-const getCartSuccess = (data) => {
-  app.cart = data.cart;
-};
-
-const createCartSuccess = (data) => {
-  app.cart = data.cart;
-};
-
-const updateCartSuccess = (data) => {
+const cartSuccess = (data) => {
   console.log(data);
   console.log('successfully updated cart');
+  let id = $('#cart-add').data('id');
+  console.log(id);
+  index.getProduct(id);
 };
 
 
@@ -100,10 +91,7 @@ module.exports = {
   signOutSuccess,
   signUpSuccess,
   signUpFailure,
-  getCartsSuccess,
-  getCartSuccess,
-  createCartSuccess,
-  updateCartSuccess,
+  cartSuccess,
   getOrdersSuccess,
   getOrderSuccess,
   createOrderSuccess,

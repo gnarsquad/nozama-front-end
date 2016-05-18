@@ -10,7 +10,7 @@ const displayProduct = function(product){
   const display = require('./templates/product.handlebars');
   $('.product-display').empty();
   $('.product-display').append(display({product}));
-  cartActions.checkCart(app.user.cart, product);
+  cartActions.getCartCheck(product);
 };
 
 const getProduct = function(id){
@@ -45,7 +45,15 @@ $(() => {
   getProducts();
   events.addHandlers();
   $('#open-cart').on('click', function() {
-    cartActions.getCart();
+    cartActions.getCartDisplay();
+  });
+  $('#total-info').on('click', function(){
+    let total = $('#cart-total').text();
+    console.log(total);
+    console.log(typeof(total));
+    let numTotal = parseFloat(total);
+    console.log(numTotal*100);
+    console.log(typeof(numTotal));
   });
 });
 

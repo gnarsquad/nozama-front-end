@@ -48,7 +48,7 @@ const displayCart = function(cart) {
   });
 };
 
-const getCart = function(){
+const getCartDisplay = function(){
   $.ajax({
     url: app.api + "/cart",
     method: 'GET',
@@ -63,33 +63,47 @@ const getCart = function(){
 
 const checkCart = function(cart, product) {
   let inCart = 0;
-  for (var i = 0; i < cart.length; i++) {
+  for (let i = 0; i < cart.length; i++) {
     if(cart[i].productid === product._id) {
       inCart = parseInt(cart[i].quantity);
       break;
     }
   }
-  $('#cart-add').on('click', function (event) {
+  $('#cart-add').on('click', function () {
     let id = product._id;
     let name = product.name;
     let price = product.price;
     let img = product.image;
     let qty = parseInt($('#quantity-select').val()) + inCart;
-    event.preventDefault();
-    console.log(id + ' ' + name + ' ' + price + ' ' + qty + ' ' + img);
+    console.log('inCart: ' + inCart);
     if(inCart === 0) {
       console.log('add to cart!');
-      authApi.addToCart(authUi.success, authUi.failure, id, name, price, qty, img);
+      authApi.addToCart(authUi.cartSuccess, authUi.failure, id, name, price, qty, img);
       inCart = qty;
     } else {
       console.log('update cart! qty: ' + qty);
-      authApi.updateCartItem(authUi.success, authUi.failure, id, qty);
+      authApi.updateCartItem(authUi.cartSuccess, authUi.failure, id, qty);
       inCart = qty;
     }
   });
 };
 
+const getCartCheck = function(product){
+  console.log(product);
+  $.ajax({
+    url: app.api + "/cart",
+    method: 'GET',
+    dataType: 'json',
+    headers:{
+      Authorization: 'Token token=' + app.user.token,
+    },
+  }).done(function(data){
+    checkCart(data.cart, product);
+  });
+};
+
 module.exports = {
   checkCart,
-  getCart
+  getCartCheck,
+  getCartDisplay
 };
