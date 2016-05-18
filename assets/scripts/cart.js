@@ -5,7 +5,7 @@ const app = require('./api/apiurl.js');
 const authUi = require('./api/ui.js');
 const authApi = require('./api/ajax.js');
 // const index = require('./index.js');
-// const ex = require('./example.js');
+
 
 
 const cartTotal = function() {
@@ -22,7 +22,7 @@ const displayCart = function(cart) {
   const display = require('./templates/cart.handlebars');
   // let cart = app.user.cart;
   console.log(cart);
-  $('.cartDisplay').empty();
+  $('.cartDisplay').empty().show();
   if(cart.length > 0) {
     $('.no-items').addClass('hidden');
     $('.has-items').removeClass('hidden');
@@ -37,18 +37,24 @@ const displayCart = function(cart) {
     $('.no-items').removeClass('hidden');
     $('.has-items').addClass('hidden');
   }
-  $('.delete-item').on('click', function(event) {
+  $('.delete-item').on('click', function() {
     let id = $(this).data('id');
-    event.preventDefault();
     authApi.deleteCartItem(authUi.success, authUi.failure, id);
     $(this).parent().parent().parent().parent().fadeOut(500, function(){
       $(this).remove();
       cartTotal();
     });
   });
+  $('.change-qty').on('click', function(){
+    let newQty = $(this).parent().find('.new-qty').val();
+    let id = $(this).data('id');
+    console.log('qty: ' + newQty + '  id: ' + id);
+    authApi.updateCartItem(authUi.cartSuccess, authUi.failure, id, newQty);
+    $(this).parent().find('.qty-display').text(newQty);
+  });
 };
 
-const getCart = function(){
+const getCartDisplay = function(){
   $.ajax({
     url: app.api + "/cart",
     method: 'GET',
@@ -63,34 +69,47 @@ const getCart = function(){
 
 const checkCart = function(cart, product) {
   let inCart = 0;
-  for (var i = 0; i < cart.length; i++) {
+  for (let i = 0; i < cart.length; i++) {
     if(cart[i].productid === product._id) {
       inCart = parseInt(cart[i].quantity);
       break;
     }
   }
-  // cartActions.setCartAddBtn(cart, product, inCart);
-  $('#cart-add').on('click', function (event) {
+  $('#cart-add').on('click', function () {
     let id = product._id;
     let name = product.name;
     let price = product.price;
     let img = product.image;
     let qty = parseInt($('#quantity-select').val()) + inCart;
-    event.preventDefault();
-    console.log(id + ' ' + name + ' ' + price + ' ' + qty + ' ' + img);
+    console.log('inCart: ' + inCart);
     if(inCart === 0) {
       console.log('add to cart!');
-      authApi.addToCart(authUi.success, authUi.failure, id, name, price, qty, img);
-      inCart += qty;
+      authApi.addToCart(authUi.cartSuccess, authUi.failure, id, name, price, qty, img);
+      inCart = qty;
     } else {
-      console.log('update cart!');
-      // authApi.updateCartItem(authUi.success, authUi.failure, id, qty);
-      inCart += qty;
+      console.log('update cart! qty: ' + qty);
+      authApi.updateCartItem(authUi.cartSuccess, authUi.failure, id, qty);
+      inCart = qty;
     }
+  });
+};
+
+const getCartCheck = function(product){
+  console.log(product);
+  $.ajax({
+    url: app.api + "/cart",
+    method: 'GET',
+    dataType: 'json',
+    headers:{
+      Authorization: 'Token token=' + app.user.token,
+    },
+  }).done(function(data){
+    checkCart(data.cart, product);
   });
 };
 
 module.exports = {
   checkCart,
-  getCart
+  getCartCheck,
+  getCartDisplay
 };
