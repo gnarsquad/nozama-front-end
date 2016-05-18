@@ -13,7 +13,7 @@
     </div>
     <hr style="margin-top: 5px; margin-bottom: 5px;">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-md-8">
         <h4 class=:"text-right">Quantity: <span class="label label-primary">{{quantity}}</span>
         <input type="text" value="" pattern = "[0-9]{1,2}" style="width: 30px">
         <button type="button" class="btn btn-default">
@@ -22,6 +22,9 @@
         <button type="button" class="btn btn-default delete-item" data-id={{productid}}>
           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
         </button>
+      </div>
+      <div class="col-md-4">
+        <h5 class="text-right">Item subtotal: $<span class="item-total" data-price={{price}} data-qty={{quantity}}></span></h5>
       </div>
     </div>
   </div>

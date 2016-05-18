@@ -60,13 +60,11 @@ const addToCart = (success, failure, id, name, price, qty, img) => {
     },
     dataProcessing: false,
     data: {
-      lineItem: {
-        quantity: qty,
-        productid: id,
-        name: name,
-        price: price,
-        image: img
-      }
+      quantity: qty,
+      productid: id,
+      name: name,
+      price: price,
+      image: img
     }
   }).done(success)
   .fail(failure);
@@ -81,25 +79,10 @@ const updateCartItem = (success, failure, id, qty) => {
     },
     dataProcessing: false,
     data: {
-      lineItem: {
-        productid: id,
-        quantity: qty
-      }
+      productid: id,
+      quantity: qty
     }
   }).done(success)
-  .fail(failure);
-};
-
-const getCart = (success, failure) => {
-  $.ajax({
-    method: 'GET',
-    url: app.api + '/cart/' + app.user.cart,
-    dataType: 'json',
-    headers:{
-      Authorization: 'Token token=' + app.user.token,
-    },
-  })
-  .done(success)
   .fail(failure);
 };
 
@@ -112,9 +95,7 @@ const deleteCartItem = (success, failure, id) => {
     },
     dataProcessing: false,
     data: {
-      // lineItem: {
-        productid: id
-      // }
+      productid: id
     }
   })
   .done(success)
@@ -223,7 +204,6 @@ module.exports = {
   signOut,
   changePass,
   addToCart,
-  getCart,
   updateCartItem,
   deleteCartItem,
   getOrders,

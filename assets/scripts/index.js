@@ -5,21 +5,49 @@ const app = require('./api/apiurl.js');
 const authUi = require('./api/ui.js');
 const authApi = require('./api/ajax.js');
 
-const displayCart = function() {
+const displayCart = function(cart) {
   const display = require('./templates/cart.handlebars');
-  let cart = app.user.cart;
+  // let cart = app.user.cart;
+  console.log(cart);
   $('.cartDisplay').empty();
   if(cart.length > 0) {
     $('.no-items').addClass('hidden');
+    $('.has-items').removeClass('hidden');
     $('.cartDisplay').append(display({cart}));
+    $('.item-total').text(function() {
+      let price = $(this).data('price');
+      let qty = $(this).data('qty');
+      return qty * price;
+    });
+    $('#cart-total').text(function(){
+      let sum = 0;
+      $('.item-total').each(function(){
+        sum += parseFloat($(this).text());
+      });
+      return sum;
+    });
   } else {
     $('.no-items').removeClass('hidden');
+    $('.has-items').addClass('hidden');
   }
   $('.delete-item').on('click', function(event) {
     let id = $(this).data('id');
     console.log(id);
     event.preventDefault();
     authApi.deleteCartItem(authUi.success, authUi.failure, id);
+  });
+};
+
+const getCart = function(){
+  $.ajax({
+    url: app.api + "/cart",
+    method: 'GET',
+    dataType: 'json',
+    headers:{
+      Authorization: 'Token token=' + app.user.token,
+    },
+  }).done(function(data){
+    displayCart(data.cart);
   });
 };
 
@@ -53,7 +81,6 @@ const displayProduct = function(product){
   const display = require('./templates/product.handlebars');
   $('.product-display').empty();
   $('.product-display').append(display({product}));
-  console.log(app.user.cart);
   checkCart(app.user.cart, product);
 };
 
@@ -89,7 +116,8 @@ $(() => {
   getProducts();
   events.addHandlers();
   $('#open-cart').on('click', function() {
-    displayCart();
+    getCart();
+    // displayCart();
   });
 });
 
