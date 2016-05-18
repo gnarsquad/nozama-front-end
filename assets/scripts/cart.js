@@ -111,11 +111,7 @@ const getCartCheck = function(product){
 
 module.exports = {
   checkCart,
-<<<<<<< 72330ae4ce419ea3fcf5b5ad1457f72fe1425bf2
   getCartCheck,
-  getCartDisplay
-=======
-  getCart,
+  getCartDisplay,
   cartTotal
->>>>>>> Add app.sum to cartTotal function
 };
