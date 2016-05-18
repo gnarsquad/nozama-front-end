@@ -30,6 +30,11 @@ const addHandlers = () => {
     event.preventDefault();
     authApi.changePass(authUi.success, authUi.failure, data);
   });
+  $('#empty-cart').on('click', function (event) {
+    console.log('click!');
+    event.preventDefault();
+    authApi.emptyCart(authUi.success, authUi.failure);
+  });
 };
 
 module.exports = {

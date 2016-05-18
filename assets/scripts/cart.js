@@ -5,7 +5,7 @@ const app = require('./api/apiurl.js');
 const authUi = require('./api/ui.js');
 const authApi = require('./api/ajax.js');
 // const index = require('./index.js');
-// const ex = require('./example.js');
+
 
 
 const cartTotal = function() {
@@ -69,7 +69,6 @@ const checkCart = function(cart, product) {
       break;
     }
   }
-  // cartActions.setCartAddBtn(cart, product, inCart);
   $('#cart-add').on('click', function (event) {
     let id = product._id;
     let name = product.name;
@@ -81,11 +80,11 @@ const checkCart = function(cart, product) {
     if(inCart === 0) {
       console.log('add to cart!');
       authApi.addToCart(authUi.success, authUi.failure, id, name, price, qty, img);
-      inCart += qty;
+      inCart = qty;
     } else {
-      console.log('update cart!');
-      // authApi.updateCartItem(authUi.success, authUi.failure, id, qty);
-      inCart += qty;
+      console.log('update cart! qty: ' + qty);
+      authApi.updateCartItem(authUi.success, authUi.failure, id, qty);
+      inCart = qty;
     }
   });
 };

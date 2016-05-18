@@ -102,6 +102,18 @@ const deleteCartItem = (success, failure, id) => {
   .fail(failure);
 };
 
+const emptyCart = (success, failure) => {
+  $.ajax({
+    url: app.api + '/cart-empty',
+    method: "DELETE",
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    }
+  })
+  .done(success)
+  .fail(failure);
+};
+
 
 // CART AJAX ENDS
 
@@ -185,6 +197,7 @@ module.exports = {
   addToCart,
   updateCartItem,
   deleteCartItem,
+  emptyCart,
   getOrders,
   getOrder,
   createOrder,
