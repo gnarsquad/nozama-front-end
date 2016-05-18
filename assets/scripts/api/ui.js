@@ -1,7 +1,7 @@
 'use strict';
 
 const app = require('./apiurl.js');
-const cartActions = require('../cart.js');
+// const cartActions = require('../cart.js');
 const index = require('../index.js');
 // const comments = require('../comments.js');
 

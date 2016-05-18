@@ -31,9 +31,11 @@ const addHandlers = () => {
     authApi.changePass(authUi.success, authUi.failure, data);
   });
   $('#empty-cart').on('click', function (event) {
-    console.log('click!');
     event.preventDefault();
     authApi.emptyCart(authUi.success, authUi.failure);
+    $('.cartDisplay').fadeOut(500, function(){
+      $('.total-row').addClass('hidden');
+    });
   });
 };
 

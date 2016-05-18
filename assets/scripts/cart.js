@@ -22,7 +22,7 @@ const displayCart = function(cart) {
   const display = require('./templates/cart.handlebars');
   // let cart = app.user.cart;
   console.log(cart);
-  $('.cartDisplay').empty();
+  $('.cartDisplay').empty().show();
   if(cart.length > 0) {
     $('.no-items').addClass('hidden');
     $('.has-items').removeClass('hidden');
@@ -37,14 +37,20 @@ const displayCart = function(cart) {
     $('.no-items').removeClass('hidden');
     $('.has-items').addClass('hidden');
   }
-  $('.delete-item').on('click', function(event) {
+  $('.delete-item').on('click', function() {
     let id = $(this).data('id');
-    event.preventDefault();
     authApi.deleteCartItem(authUi.success, authUi.failure, id);
     $(this).parent().parent().parent().parent().fadeOut(500, function(){
       $(this).remove();
       cartTotal();
     });
+  });
+  $('.change-qty').on('click', function(){
+    let newQty = $(this).parent().find('.new-qty').val();
+    let id = $(this).data('id');
+    console.log('qty: ' + newQty + '  id: ' + id);
+    authApi.updateCartItem(authUi.cartSuccess, authUi.failure, id, newQty);
+    $(this).parent().find('.qty-display').text(newQty);
   });
 };
 

@@ -47,14 +47,6 @@ $(() => {
   $('#open-cart').on('click', function() {
     cartActions.getCartDisplay();
   });
-  $('#total-info').on('click', function(){
-    let total = $('#cart-total').text();
-    console.log(total);
-    console.log(typeof(total));
-    let numTotal = parseFloat(total);
-    console.log(numTotal*100);
-    console.log(typeof(numTotal));
-  });
 });
 
 module.exports = {
