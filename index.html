@@ -99,48 +99,26 @@
       <div class="modal-content">
         <div class="modal-header cart-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title">Your shopping cart</h3>
+          <h3 class="modal-title"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Your shopping cart</h3>
         </div>
         <div class="modal-body">
           <h4 class="hidden no-items">Your shopping cart is empty.</h4>
-            <div class="row has-items">
-              <div class="col-xs-3">
-                <h4>Image</h4>
-              </div>
-              <div class="col-xs-6">
-                <h4>Name</h4>
-              </div>
-              <div class="col-xs-3">
-                <h4>Price</h4>
-              </div>
+          <div class="row has-items">
+            <div class="col-xs-3">
+              <h4>Image</h4>
             </div>
+            <div class="col-xs-6">
+              <h4>Name</h4>
+            </div>
+            <div class="col-xs-3">
+              <h4>Price</h4>
+            </div>
+          </div>
           <div class="cartDisplay">
-            <div class="well well-sm">
-              <div class="row">
-                <div class="col-xs-3">
-                  <img src="assets/images/placeholder.png" class="img-responsive img-cart" data-id="" data-original="" name="" />
-                </div>
-                <div class="col-xs-6">
-                  <h4>Product name</h4>
-                </div>
-                <div class="col-xs-3">
-                  <h4>$12.34</h4>
-                </div>
-              </div>
-              <hr style="margin-top: 5px; margin-bottom: 5px;">
-              <div class="row">
-                <div class="col-xs-12">
-                  <h4 class=:"text-right">Quantity: <span class="label label-primary">1</span>
-                  <input type="text" value="" pattern = "[0-9]{1,2}" style="width: 30px">
-                  <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Change
-                  </button>
-                  <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
-                  </button>
-                </div>
-              </div>
-            </div>
+
+          </div>
+          <div class="has-items total-row">
+            <h3 class="text-right has-items cart-total-line">Total: $<span id="cart-total"></span>  </h3>
           </div>
         </div>
         <div class="modal-footer">

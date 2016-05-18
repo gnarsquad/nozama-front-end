@@ -13,12 +13,19 @@ const displayCart = function(cart) {
   if(cart.length > 0) {
     $('.no-items').addClass('hidden');
     $('.has-items').removeClass('hidden');
-    $('.cartDisplay').append(display({cart})).append('<p>Subtotal</p>');
+    $('.cartDisplay').append(display({cart}));
     $('.item-total').text(function() {
       let price = $(this).data('price');
       let qty = $(this).data('qty');
       return qty * price;
-    });  
+    });
+    $('#cart-total').text(function(){
+      let sum = 0;
+      $('.item-total').each(function(){
+        sum += parseFloat($(this).text());
+      });
+      return sum;
+    });
   } else {
     $('.no-items').removeClass('hidden');
     $('.has-items').addClass('hidden');
