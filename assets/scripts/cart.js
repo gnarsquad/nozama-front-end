@@ -19,6 +19,15 @@ const cartTotal = function() {
   });
 };
 
+const itemTotal = function() {
+  $('.item-total').text(function() {
+    let price = $(this).data('price');
+    let qty = $(this).data('qty');
+    return qty * price;
+  });
+  cartTotal();
+};
+
 const displayCart = function(cart) {
   const display = require('./templates/cart.handlebars');
   $('.cartDisplay').empty().show();
@@ -26,12 +35,7 @@ const displayCart = function(cart) {
     $('.no-items').addClass('hidden');
     $('.has-items').removeClass('hidden');
     $('.cartDisplay').append(display({cart}));
-    $('.item-total').text(function() {
-      let price = $(this).data('price');
-      let qty = $(this).data('qty');
-      return qty * price;
-    });
-    cartTotal();
+    itemTotal();
   } else {
     $('.no-items').removeClass('hidden');
     $('.has-items').addClass('hidden');
@@ -49,6 +53,8 @@ const displayCart = function(cart) {
     let id = $(this).data('id');
     authApi.updateCartItem(authUi.cartSuccess, authUi.failure, id, newQty);
     $(this).parent().find('.qty-display').text(newQty);
+    $(this).parent().parent().parent().find('.item-total').data("qty", newQty);
+    itemTotal();
   });
 };
 

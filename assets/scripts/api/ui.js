@@ -1,7 +1,7 @@
 'use strict';
 
 const app = require('./apiurl.js');
-// const cartActions = require('../cart.js');
+const cartActions = require('../cart.js');
 const index = require('../index.js');
 const authApi = require('./ajax.js');
 // const comments = require('../comments.js');
@@ -54,9 +54,9 @@ const failure = (error) => {
 
 
 
-const cartSuccess = (data) => {
+const cartSuccess = () => {
   console.log('successfully updated cart');
-  let id = $('#cart-add').data('id');
+  // let id = $('#cart-add').data('id');
   // index.getProduct(id);
 };
 
@@ -64,12 +64,18 @@ const orderSuccess = (data) => {
   let orders = data.order;
   console.log(orders);
   const display = require('../templates/orders.handlebars');
-  $('.orders-display').append(display({orders:orders}));
+  $('.orders-display').empty().append(display({orders:orders}));
+  $('.order-item-total').text(function() {
+    let price = $(this).data('price');
+    let qty = $(this).data('qty');
+    return qty * price;
+  });
 };
 
 const stripeSuccess = (data) => {
   console.log(data);
   authApi.getCartOrder(success(), failure());
+  cartActions.getCartDisplay();
 };
 
 module.exports = {
