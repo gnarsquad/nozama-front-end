@@ -44,6 +44,7 @@ project, we made frequent and descriptive commits to our front and back end proj
 ## Unsolved Problems
 
 Implement code for our search function
+UI improvements, such as displaying an order total per order, and only showing a new quantity input field on cart items if update quantity has not been selected.
 
 ## Dependency Installation
 
@@ -52,9 +53,9 @@ Please run 'npm install stripe' to install stripe dependencies.
 ## User Stories
 
 1.  As a user, I want to be able to sign up and sign in to create a unique account.
-1.  As a user, I want to see the products available for purchase.
-1.  As a user, when I want to purchase an item I want to be able to add the item to my shopping cart and have it displayed there.
-1.  As a user, I want to be able to update and delete items in my cart if I change my mind about what I want to purchase.
-1.  As a user, I want to be able to purchase items in my cart using a credit card online.
-1.  As a user, I want to be able to see my previous purchases so I know what I've ordered.
-1.  As a user, I want to have all the above transactions be secure so my account information and payment information can't be accessed by others.
+2.  As a user, I want to see the products available for purchase.
+3.  As a user, when I want to purchase an item I want to be able to add the item to my shopping cart and have it displayed there.
+4.  As a user, I want to be able to update and delete items in my cart if I change my mind about what I want to purchase.
+5.  As a user, I want to be able to purchase items in my cart using a credit card online.
+6.  As a user, I want to be able to see my previous purchases so I know what I've ordered.
+7.  As a user, I want to have all the above transactions be secure so my account information and payment information can't be accessed by others.
