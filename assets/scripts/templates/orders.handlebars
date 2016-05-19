@@ -1,0 +1,30 @@
+{{#each orders}}
+  <div class="well well-sm order">
+  <h4>Order purchased: <span>{{createdAt}}</span></h4>
+  {{#each items}}
+    <div class="well well-sm line-item" data-id={{productid}}>
+      <div class="row">
+        <div class="col-xs-3">
+          <img src={{image}} class="img-responsive img-cart"/>
+        </div>
+        <div class="col-xs-6">
+          <h4>{{name}}</h4>
+        </div>
+        <div class="col-xs-3">
+          <h4>${{price}}</h4>
+        </div>
+      </div>
+      <hr style="margin-top: 5px; margin-bottom: 5px;">
+      <div class="row">
+        <div class="col-md-8">
+            <h4 class=:"text-right">Quantity: <span class="label label-primary qty-display">{{quantity}}</span></h4>
+        </div>
+        <div class="col-md-4">
+          <h5 class="text-right">Item subtotal: $<span class="order-item-total" data-price={{price}} data-qty={{quantity}}></span></h5>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+  </div>
+  <hr>
+{{/each}}
