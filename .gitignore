@@ -3,11 +3,11 @@ app.js
 specs.js
 #*bundle.js
 _SpecRunner.html
-*.woff2
-*.woff
-*.svg
-*.ttf
-*.eot
+#*.woff2
+#*.woff
+#*.svg
+#*.ttf
+#*.eot
 
 # Created by https://www.gitignore.io
 
