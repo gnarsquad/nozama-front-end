@@ -124,20 +124,7 @@ const emptyCart = (success, failure) => {
 const getOrders = (success, failure) => {
   $.ajax({
     method: 'GET',
-    url: app.api + '/orders',
-    dataType: 'json',
-    headers:{
-      Authorization: 'Token token=' + app.user.token,
-    },
-  })
-  .done(success)
-  .fail(failure);
-};
-
-const getOrder = (success, failure) => {
-  $.ajax({
-    method: 'GET',
-    url: app.api + '/orders/' + app.order._id,
+    url: app.api + '/orders/',
     dataType: 'json',
     headers:{
       Authorization: 'Token token=' + app.user.token,
@@ -161,37 +148,27 @@ const createOrder = (success, failure, data) => {
   .fail(failure);
 };
 
-const updateOrder = (success, failure, data) => {
-  $.ajax({
-    method: "PATCH",
-    url: app.api + '/orders/' + app.order._id,
-    data,
-    headers: {
-      Authorization: 'Token token='+ app.user.token,
-    },
-  })
-  .done(success)
-  .fail(failure);
-};
+// ORDERS AJAX ENDS
 
-const deleteOrder = (success, failure) => {
+const getCartOrder = function(success, failure){
   $.ajax({
-    url: app.api + '/orders/' + app.order._id,
-    method: "DELETE",
-    headers: {
+    url: app.api + "/cart",
+    method: 'GET',
+    dataType: 'json',
+    headers:{
       Authorization: 'Token token=' + app.user.token,
     },
+  }).done(function(data){
+    createOrder(success, failure, data);
+    emptyCart(success, failure);
   })
-  .done(success)
   .fail(failure);
 };
-
-// ORDERS AJAX ENDS
 
 
 // STRIPE AJAX STARTS
 
-const stripeCharge = function(credentials) {
+const stripeCharge = function(success, failure, credentials) {
   $.ajax({
     url: app.api + '/charge',
     method: "POST",
@@ -220,9 +197,7 @@ module.exports = {
   deleteCartItem,
   emptyCart,
   getOrders,
-  getOrder,
   createOrder,
-  updateOrder,
-  deleteOrder,
-  stripeCharge
+  stripeCharge,
+  getCartOrder
 };
