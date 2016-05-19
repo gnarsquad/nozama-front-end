@@ -125,8 +125,7 @@
           <button id="empty-cart" type="button" class="btn btn-default">Clear cart</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <script src="https://checkout.stripe.com/checkout.js"></script>
-          <button type="button" class="btn btn-success checkout" id="checkoutBtn">Check Out</button>
-          <!--<button id="checkout-btn" type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#checkoutModal">Proceed to Checkout</button>-->
+          <button type="button" class="btn btn-success checkout" id="checkoutBtn" data-dismiss="modal">Check Out</button>
         </div>
       </div>
     </div>
@@ -195,7 +194,7 @@
         <button id="show-orders" type="button" class="btn btn-success navbar-btn loggedout-hide" data-toggle="modal" data-target="#ordersModal">
           <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Completed Orders
         </button>
-        <button id="cart-order" type="button" class="btn btn-success navbar-btn loggedout-hide">
+        <button id="cart-order" type="button" class="btn btn-danger navbar-btn loggedout-hide">
           Cart to Order
         </button>
         <div class="btn-group navbar-right">
