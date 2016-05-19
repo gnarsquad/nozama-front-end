@@ -178,12 +178,8 @@ const stripeCharge = function(success, failure, credentials) {
     dataType: 'json',
     data: credentials
   })
-  .done(function(data) {
-    console.log(data);
-  })
-  .fail(function(failure) {
-    console.error(failure);
-  });
+  .done(success)
+  .fail(failure);
 };
 
 
