@@ -3,7 +3,7 @@
 ## Links
 
 Deployed App:
-<>
+<http://gnarsquad.github.io/nozama-front-end>
 
 Back End Repository:
 <https://github.com/gnarsquad/nozama-api>
