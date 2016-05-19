@@ -2,8 +2,8 @@
 
 const events = require('./api/events.js');
 const app = require('./api/apiurl.js');
-// const authUi = require('./api/ui.js');
-// const authApi = require('./api/ajax.js');
+const authUi = require('./api/ui.js');
+const authApi = require('./api/ajax.js');
 const cartActions = require('./cart.js');
 const stripeEvents = require('./stripe.js');
 
@@ -46,11 +46,11 @@ $(() => {
   getProducts();
   events.addHandlers();
   stripeEvents.addStripeHandlers();
-  $('#open-cart').on('click', function() {
-    cartActions.getCartDisplay();
+  $('#cart-order').on('click', function() {
+    authApi.getCartOrder();
   });
 });
 
 module.exports = {
-
+  getProduct,
 };

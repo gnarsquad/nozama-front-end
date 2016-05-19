@@ -3,6 +3,7 @@
 const app = require('./apiurl.js');
 // const cartActions = require('../cart.js');
 const index = require('../index.js');
+const authApi = require('./ajax.js');
 // const comments = require('../comments.js');
 
 
@@ -52,37 +53,24 @@ const failure = (error) => {
 };
 
 
-// CARTS UI STARTS
-
 
 const cartSuccess = (data) => {
-  console.log(data);
   console.log('successfully updated cart');
   let id = $('#cart-add').data('id');
-  console.log(id);
-  index.getProduct(id);
+  // index.getProduct(id);
 };
 
+const orderSuccess = (data) => {
+  let orders = data.order;
+  console.log(orders);
+  const display = require('../templates/orders.handlebars');
+  $('.orders-display').append(display({orders:orders}));
+};
 
-// CARTS UI ENDS
-
-
-// ORDERS UI STARTS
-
-
-const getOrdersSuccess = (data) => {
-  app.orders = data.orders;
+const stripeSuccess = (data) => {
   console.log(data);
+  authApi.getCartOrder(success(), failure());
 };
-
-const getOrderSuccess = (data) => {
-  app.order = data.order;
-};
-
-const createOrderSuccess = (data) => {
-  app.order = data.order;
-};
-
 
 module.exports = {
   failure,
@@ -92,7 +80,6 @@ module.exports = {
   signUpSuccess,
   signUpFailure,
   cartSuccess,
-  getOrdersSuccess,
-  getOrderSuccess,
-  createOrderSuccess,
+  stripeSuccess,
+  orderSuccess
 };

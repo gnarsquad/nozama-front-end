@@ -2,34 +2,11 @@
 
 const app = require('./api/apiurl.js');
 const authApi = require('./api/ajax.js');
-const cartJS = require('./cart.js');
-
-// total prices for stripeCharge
-
-// TOTAL CART
-
-
-// const cartTotal = function () {
-//   let total = 0;
-//  $('.item-total').forEach(function(product) {
-//    total += parseInt($(this));
-//  });
-//    console.log(total);
-//  app.user.cart.total = total;
-// };
-// let sum = 0;
-// const cartTotal = function() {
-//     $('#cart-total').each(function(){
-//       sum += parseFloat($(this));
-//     });
-//     return sum;
-//   };
+const authUi = require('./api/ui.js');
+// const cartJS = require('./cart.js');
 
 // stripe handler variable
 
-let cartSum = parseInt($('#cart-total').text());
-console.log(cartSum);
-console.log(typeof($('#cart-total').text()));
 
 let handler = StripeCheckout.configure({
     key: 'pk_test_La0sDwdMY4vZwGyewISFrpm4',
@@ -40,8 +17,7 @@ let handler = StripeCheckout.configure({
       stripeToken: token.id,
       amount: app.sum
     };
-    console.log(credentials);
-    authApi.stripeCharge(credentials);
+    authApi.stripeCharge(authUi.stripeSuccess, authUi.failure, credentials);
   }
 });
 

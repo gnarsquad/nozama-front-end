@@ -21,8 +21,6 @@ const cartTotal = function() {
 
 const displayCart = function(cart) {
   const display = require('./templates/cart.handlebars');
-  // let cart = app.user.cart;
-  console.log(cart);
   $('.cartDisplay').empty().show();
   if(cart.length > 0) {
     $('.no-items').addClass('hidden');
@@ -49,7 +47,6 @@ const displayCart = function(cart) {
   $('.change-qty').on('click', function(){
     let newQty = $(this).parent().find('.new-qty').val();
     let id = $(this).data('id');
-    console.log('qty: ' + newQty + '  id: ' + id);
     authApi.updateCartItem(authUi.cartSuccess, authUi.failure, id, newQty);
     $(this).parent().find('.qty-display').text(newQty);
   });
@@ -82,13 +79,10 @@ const checkCart = function(cart, product) {
     let price = product.price;
     let img = product.image;
     let qty = parseInt($('#quantity-select').val()) + inCart;
-    console.log('inCart: ' + inCart);
     if(inCart === 0) {
-      console.log('add to cart!');
       authApi.addToCart(authUi.cartSuccess, authUi.failure, id, name, price, qty, img);
       inCart = qty;
     } else {
-      console.log('update cart! qty: ' + qty);
       authApi.updateCartItem(authUi.cartSuccess, authUi.failure, id, qty);
       inCart = qty;
     }
@@ -96,7 +90,6 @@ const checkCart = function(cart, product) {
 };
 
 const getCartCheck = function(product){
-  console.log(product);
   $.ajax({
     url: app.api + "/cart",
     method: 'GET',
@@ -111,11 +104,7 @@ const getCartCheck = function(product){
 
 module.exports = {
   checkCart,
-<<<<<<< 72330ae4ce419ea3fcf5b5ad1457f72fe1425bf2
   getCartCheck,
-  getCartDisplay
-=======
-  getCart,
+  getCartDisplay,
   cartTotal
->>>>>>> Add app.sum to cartTotal function
 };
