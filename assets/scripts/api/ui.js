@@ -2,14 +2,11 @@
 
 const app = require('./apiurl.js');
 const cartActions = require('../cart.js');
-const index = require('../index.js');
 const authApi = require('./ajax.js');
-// const comments = require('../comments.js');
 
 
 const signInSuccess = (data) => {
   app.user = data.user;
-  // localStorage.setItem('currentUser',$(this).data("id"));
   console.log(app);
   $( document ).ready(function() {
     $('.loggedin-hide').fadeOut(500);
