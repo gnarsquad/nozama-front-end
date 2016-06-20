@@ -67,7 +67,7 @@ const addToCart = (success, failure, id, name, price, qty, img) => {
       image: img
     }
   }).done(success)
-  .fail(failure);
+    .fail(failure);
 };
 
 const updateCartItem = (success, failure, id, qty) => {
@@ -83,7 +83,7 @@ const updateCartItem = (success, failure, id, qty) => {
       quantity: qty
     }
   }).done(success)
-  .fail(failure);
+    .fail(failure);
 };
 
 const deleteCartItem = (success, failure, id) => {

@@ -71,6 +71,15 @@ const getCartDisplay = function(){
   });
 };
 
+const cartAddMsg = function() {
+  if (app.user) {
+    $('.messages').prepend('<div class="alert alert-success" role="alert">Added to cart!</div>');
+    $('.alert').delay(1000).fadeOut('normal', function() {
+      $(this).remove();
+    });
+  }
+};
+
 const checkCart = function(cart, product) {
   let inCart = 0;
   for (let i = 0; i < cart.length; i++) {
@@ -92,6 +101,7 @@ const checkCart = function(cart, product) {
       authApi.updateCartItem(authUi.cartSuccess, authUi.failure, id, qty);
       inCart = qty;
     }
+    cartAddMsg();
   });
 };
 
