@@ -47,12 +47,6 @@ const getProducts = function(){
   });
 };
 
-const displaySearch = function(response) {
-  const display = require('./templates/product-listing.handlebars');
-  $('.content').empty();
-  $('.content').append(display({response}));
-};
-
 const searchProduct = function(event) {
   event.preventDefault();
   let search = $('#search-input').val();
