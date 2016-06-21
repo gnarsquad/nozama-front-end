@@ -194,6 +194,14 @@
         <button id="show-orders" type="button" class="btn btn-success navbar-btn loggedout-hide" data-toggle="modal" data-target="#ordersModal">
           <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Completed Orders
         </button>
+        <button id="get-products" type="button" class="btn btn-primary navbar-btn loggedout-hide">
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span> View Products
+        </button>
+        <!-- Search Form -->
+        <form class="navbar-form loggedout-hide product-search" id="product-search">
+          <input id="search-input" type="text" name="[data]name" placeholder="Search">
+          <input class="btn btn-success navbar-btn" type="submit">
+        </form>
         <!-- For testing order placement quickly
         <button id="cart-order" type="button" class="btn btn-danger navbar-btn loggedout-hide">
           Cart to Order
