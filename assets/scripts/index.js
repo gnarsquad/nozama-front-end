@@ -47,12 +47,40 @@ const getProducts = function(){
   });
 };
 
+const searchProduct = function(event) {
+  event.preventDefault();
+  let search = $('#search-input').val();
+  $.ajax({
+    url: app.api + '/search',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    contentType: false,
+    processData: false,
+    data: search
+  }).done(function(data) {
+    let product = [data.product];
+    console.log(product);
+    $('.content').empty();
+    displayProducts(product);
+    $('#search-input').val("");
+  }).fail(function(fail) {
+    console.error(fail);
+  });
+};
+
 $(() => {
   getProducts();
   events.addHandlers();
   stripeEvents.addStripeHandlers();
   $('#cart-order').on('click', function() {
     authApi.getCartOrder();
+  });
+  $('#product-search').on('submit', searchProduct);
+  $('#get-products').on('click', function() {
+    $('.content').empty();
+    getProducts();
   });
 });
 

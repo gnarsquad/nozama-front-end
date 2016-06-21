@@ -102,6 +102,10 @@ const checkCart = function(cart, product) {
       inCart = qty;
     }
     cartAddMsg();
+    const modalHide = function() {
+      $('#productModal').modal('hide');
+    };
+    setTimeout(modalHide, 2000);
   });
 };
 
