@@ -47,6 +47,12 @@ const getProducts = function(){
   });
 };
 
+const displaySearch = function(response) {
+  const display = require('./templates/product-listing.handlebars');
+  $('.content').empty();
+  $('.content').append(display({response}));
+};
+
 const searchProduct = function(event) {
   event.preventDefault();
   let search = $('#search-input').val();
@@ -61,9 +67,9 @@ const searchProduct = function(event) {
     data: search
   }).done(function(data) {
     let product = [data.product];
-    let response = {products: product};
-    console.log(response);
-    getProduct(response);
+    console.log(product);
+    $('.content').empty();
+    displayProducts(product);
     $('#search-input').val("");
   }).fail(function(fail) {
     console.error(fail);
@@ -78,6 +84,10 @@ $(() => {
     authApi.getCartOrder();
   });
   $('#product-search').on('submit', searchProduct);
+  $('#get-products').on('click', function() {
+    $('.content').empty();
+    getProducts();
+  });
 });
 
 module.exports = {
