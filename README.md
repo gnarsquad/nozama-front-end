@@ -3,7 +3,9 @@
 ## Links
 
 Deployed App:
+
 <http://gnarsquad.github.io/nozama-front-end>
+
 
 Back End Repository:
 <https://github.com/gnarsquad/nozama-api>
@@ -44,7 +46,9 @@ project, we made frequent and descriptive commits to our front and back end proj
 ## Unsolved Problems
 
 Implement code for our search function
+
 UI improvements, such as displaying an order total per order, and only showing a new quantity input field on cart items if update quantity has not been selected.
+
 
 ## Dependency Installation
 
